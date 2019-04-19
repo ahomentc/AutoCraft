@@ -8,7 +8,7 @@ title: Proposal
 ## Summary of the Project
 In this project, we plan to create an agent that avoid/resists enemies. The approach of the agent will be to avoid hostile attacks and damages by building structures to defend itself. 
 
-To measure the performance of our agent we will gudge it on the following terms: <br/>
+To measure the performance of our agent we will judge it on the following terms: <br/>
 Positive feedback for: <br/>
 	- Surviving. More time = More reward <br/>
 Negavite feedback for: <br/>
