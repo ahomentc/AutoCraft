@@ -8,13 +8,13 @@ title: Proposal
 ## Summary of the Project
 In this project, we plan to create an agent that avoid/resists enemies. The approach of the agent will be to avoid hostile attacks and damages by building structures to defend itself. 
 
-To measure the performance of our agent we will gudge it on the following terms: \n
-Positive feedback for: \n
-	- Surviving. More time = More reward \n
-Negavite feedback for: \n
-	- Getting hit \n
-	- Dying \n
-	- Placing blocks (to encourage efficent design) \n
+To measure the performance of our agent we will gudge it on the following terms: <br/>
+Positive feedback for: <br/>
+	- Surviving. More time = More reward <br/>
+Negavite feedback for: <br/>
+	- Getting hit <br/>
+	- Dying <br/>
+	- Placing blocks (to encourage efficent design) <br/>
 
 The environment we will be using for this project will be a controlled one where zombies are respawned after a fixed amount of time or by user input. We will set the number of zombies ourselves.
 
