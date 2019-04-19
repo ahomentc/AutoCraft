@@ -6,17 +6,17 @@ title: Proposal
 
 
 ## Summary of the Project
-In this project, we plan to create an agent that avoid/resists enemies. The approach of the agent will be to avoid hostile attacks and damages by building structures to defent itself. 
+In this project, we plan to create an agent that avoid/resists enemies. The approach of the agent will be to avoid hostile attacks and damages by building structures to defend itself. 
 
-To measure the performance of our agent we will gudge it on the following terms:
-Positive feedback for: 
-	- Surviving. More time = More reward
-Negavite feedback for: 
-	- Getting hit
-	- Dying
-	- Placing blocks (to encourage efficent design)
+To measure the performance of our agent we will gudge it on the following terms: \n
+Positive feedback for: \n
+	- Surviving. More time = More reward \n
+Negavite feedback for: \n
+	- Getting hit \n
+	- Dying \n
+	- Placing blocks (to encourage efficent design) \n
 
-The environemnt we will be using for this project will be a controlled one where zombies are respawned after a fixed amount of time or by user input. We will set the number of zombies ourself.
+The environment we will be using for this project will be a controlled one where zombies are respawned after a fixed amount of time or by user input. We will set the number of zombies ourselves.
 
 
 ##  AI/ML Algorithms
@@ -27,7 +27,7 @@ We plan to evaluate the agent based on how long it can stay alive and its health
 
 The base goal is to survive with a single zombie on a flat plain. The next goal will be to survive against 3 enemies of different types at the same time. The final goal will be to survive against 10 enemies.
 
-Our time goal will be to make agent survive for at least three minutes for each base goal.
+Our time goal will be to make agent survive for at least three minutes for each goal.
 
 
 ## Appointment with the Instructor
