@@ -6,11 +6,11 @@ title:  Team
 # {{ page.title }}
 
 
-## USER 1
+## Andrei Homentcovschi
 ***UCI Net ID***: ahomentc
 
-## USER 2
+## Francisco Loya
 ***UCI Net ID***: floya
 
-## USER 3
+## Viwaswat Raj Singh
 ***UCI Net ID***: singhvr
