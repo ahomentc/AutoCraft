@@ -11,7 +11,7 @@ In this project, we plan to create an agent that avoid/resists enemies. The appr
 To measure the performance of our agent we will judge it on the following terms: <br/>
 Positive feedback for: <br/>
 	- Surviving. More time = More reward <br/>
-Negavite feedback for: <br/>
+Negative feedback for: <br/>
 	- Getting hit <br/>
 	- Dying <br/>
 	- Placing blocks (to encourage efficent design) <br/>
