@@ -6,28 +6,30 @@ title: Proposal
 
 
 ## Summary of the Project
-In this project, we plan to create an agent that avoid/resists enemies. The approach of the agent will be to avoid hostile attacks and damages by building structures to defend itself. 
+The main idea behind the project is to solve the Monty Hall problem. The Monty Hall problem is a brain teaser of sorts which traditionally involves the use of probability. <br/>
+The player is given 3 doors, 2 of which contains goat and the final one contains a car. The aim for the player is to win the car. The player first makes a choice, the host opens up a door (not chosen by the player) with a goat in it and provides a choice to the player to stick with his option or change his preference. <br/>
+According to probability, the player should change his door to maximize his chances. The aim of this project is to make sure the agent learns to change his option of the door when prompted by the host in order to have the highest probability of winning.<br/>
+Input: Observation State <br/>
+Output: list of actions needed to move to door and hit the switch (some way to indicate choice)
 
-To measure the performance of our agent we will judge it on the following terms: <br/>
-Positive feedback for: <br/>
-	- Surviving. More time = More reward <br/>
-Negative feedback for: <br/>
-	- Getting hit <br/>
-	- Dying <br/>
-	- Placing blocks (to encourage efficent design) <br/>
-
-The environment we will be using for this project will be a controlled one where zombies are respawned after a fixed amount of time or by user input. We will set the number of zombies ourselves.
-
+n-1/n
 
 ##  AI/ML Algorithms
-We will use Reinforcement learning with Q-learning. 
+We are going to be implementing a deep Q learning algorithm that works backwards to figure out how the actions of the agent led to the final reward.
 
 ##  Evaluation Plan
-We plan to evaluate the agent based on how long it can stay alive and its health level. The longer it stays alive, the higher the score. Similarly for health, higher health will be rewarded. We will run the ML algorithm until the difference in time between the previous survival length and the current surival length is less than 1 second. 
+We will evaluate the success of the project if the agent first selects a hole, then always switches to the unselected hole after the environment reveals the incorrect/bad hole. The Quantitative metric: (1) Agent increases success of choosing correct hole. Baselines are as followed: <br/>
+(1) Agent can walk to a hole, <br/>
+(2) Agent acts on a choice that gives a better reward, <br/>
+(3) Agent switches to hole after environment reveals a hole that had a bad outcome, <br/>
+(4) Agent continuously switches to unselected hole environment reveals a bad outcome. We expect our approach to improve the metric by at least ⅔ of the total sessions, <br/>
+(5) Agent can switch to a correct hole on N amount of holes, where N is less than 100. We will evaluate the agent based on the data collected after every session that the agent completes.
 
-The base goal is to survive with a single zombie on a flat plain. The next goal will be to survive against 3 enemies of different types at the same time. The final goal will be to survive against 10 enemies.
-
-Our time goal will be to make agent survive for at least three minutes for each goal.
+<br/>
+Qualitatively, the agent should <br/>
+(1) be able to learn to walk, <br/>
+(2) be able to mark it’s first choice on a hole, <br/>
+(3) pick the higher rewarding hole. To verify the agent works, we will use an algorithm to measure the amount of sessions the agent selected correctly and divide that with the total amount of sessions ran. The moonshot case will be that the agent chooses correctly greater than n-1/n times for n number of doors.
 
 
 ## Appointment with the Instructor
