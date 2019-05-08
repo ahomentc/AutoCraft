@@ -12,13 +12,13 @@ According to probability, the player should change his door to maximize his chan
 Input: Observation State <br/>
 Output: list of actions needed to move to door and hit the switch (some way to indicate choice)
 
-n-1/n
-
 ##  AI/ML Algorithms
 We are going to be implementing a deep Q learning algorithm that works backwards to figure out how the actions of the agent led to the final reward.
 
 ##  Evaluation Plan
-We will evaluate the success of the project if the agent first selects a hole, then always switches to the unselected hole after the environment reveals the incorrect/bad hole. The Quantitative metric: (1) Agent increases success of choosing correct hole. Baselines are as followed: <br/>
+We will evaluate the success of the project if the agent first selects a hole, then always switches to the unselected hole after the environment reveals the incorrect/bad hole. The Quantitative metric: <br/>
+(1) Agent increases success of choosing correct hole. Baselines are as followed: <br/>
+----<br/>
 (1) Agent can walk to a hole, <br/>
 (2) Agent acts on a choice that gives a better reward, <br/>
 (3) Agent switches to hole after environment reveals a hole that had a bad outcome, <br/>
