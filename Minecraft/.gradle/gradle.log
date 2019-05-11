@@ -36,1051 +36,240 @@ Note: Recompile with -Xlint:unchecked for details.
 :extractUserdev UP-TO-DATE
 :getAssetIndex UP-TO-DATE
 :getAssets
-Current status: 972/1196   81%
-Current status: 1050/1196   87%
+Current status: 979/1196   81%
 :makeStart SKIPPED
 :runClient
-[16:14:16] [main/INFO] [GradleStart]: Extra: []
-[16:14:16] [main/INFO] [GradleStart]: Found and added coremod: com.microsoft.Malmo.OverclockingPlugin
-[16:14:16] [main/INFO] [GradleStart]: Running with arguments: [--userProperties, {}, --assetsDir, /Users/andrei/.gradle/caches/minecraft/assets, --assetIndex, 1.11, --accessToken{REDACTED}, --version, 1.11.2, --tweakClass, net.minecraftforge.fml.common.launcher.FMLTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
-[16:14:16] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLTweaker
-[16:14:16] [main/INFO] [FML]: Forge Mod Loader version 13.20.0.2228 for Minecraft 1.11.2 loading
-[16:14:16] [main/INFO] [FML]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_202, running on Mac OS X:x86_64:10.14.1, installed at /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre
-[16:14:16] [main/INFO] [FML]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
-[16:14:16] [main/INFO] [FML]: Found a command line coremod : com.microsoft.Malmo.OverclockingPlugin
-[16:14:16] [main/WARN] [FML]: The coremod com.microsoft.Malmo.OverclockingPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
-[16:14:16] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
-[16:14:16] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
-[16:14:16] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
-[16:14:16] [main/INFO] [GradleStart]: Injecting location in coremod com.microsoft.Malmo.OverclockingPlugin
-[16:14:16] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[16:14:16] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
-[16:14:16] [main/ERROR] [FML]: The binary patch set is missing. Either you are in a development environment, or things are not going to work!
-[16:14:17] [main/ERROR] [FML]: FML appears to be missing any signature data. This is not a good thing
-[16:14:17] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
-[16:14:17] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
-[16:14:17] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
-[16:14:18] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
-[16:14:18] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
-[16:14:18] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
-[16:14:18] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.client.main.Main}
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:58]: MALMO: Attempting to transform MinecraftServer
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:187]: MALMO: Found Minecraft, attempting to transform it
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:193]: MALMO: Found Minecraft.runGameLoop() method, attempting to transform it
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:208]: MALMO: Hooked into call to Minecraft.updateDisplay()
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:42]: Transformed Name: net.minecraft.client.entity.EntityPlayerSP
-[16:14:18] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:42]: Transformed Name: net.minecraft.client.entity.AbstractClientPlayer
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:58]: MALMO: Attempting to transform MinecraftServer
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:123]: MALMO: Found MinecraftServer, attempting to transform it
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:129]: MALMO: Found MinecraftServer.run() method, attempting to transform it
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
-[16:14:19] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
-[16:14:19] [Client thread/INFO]: Setting user: Player88
-[16:14:24] [Client thread/WARN]: Skipping bad option: lastServer:
-[16:14:24] [Client thread/INFO]: LWJGL Version: 2.9.2
-[16:14:24] [Client thread/INFO]: [STDOUT]: MALMO: Attempting to transform MinecraftServer
-[16:14:24] [Client thread/INFO]: [STDOUT]: MALMO: Found GlStateManager, attempting to transform it
-[16:14:24] [Client thread/INFO]: [STDOUT]: MALMO: Found GlStateManager.bindTexture() method, attempting to transform it
-[16:14:24] [Client thread/INFO]: [STDOUT]: MALMO: Hooked into call to GlStateManager.bindTexture()
-[16:14:24] [Client thread/INFO] [FML]: MinecraftForge v13.20.0.2228 Initialized
-[16:14:25] [Client thread/INFO] [FML]: Replaced 232 ore recipes
-[16:14:25] [Client thread/INFO] [FML]: Found 0 mods from the command line. Injecting into mod discoverer
-[16:14:25] [Client thread/INFO] [FML]: Searching /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/run/mods for mods
-[16:14:27] [Client thread/INFO] [FML]: Forge Mod Loader has identified 5 mods to load
-[16:14:27] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, malmomod] at CLIENT
-[16:14:27] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, malmomod] at SERVER
-[16:14:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Microsoft Malmo Mod
-[16:14:27] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:27] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:27] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:27] [Client thread/INFO] [FML]: Processing ObjectHolder annotations
-[16:14:27] [Client thread/INFO] [FML]: Found 444 ObjectHolder annotations
-[16:14:27] [Client thread/INFO] [FML]: Identifying ItemStackHolder annotations
-[16:14:27] [Client thread/INFO] [FML]: Found 0 ItemStackHolder annotations
-[16:14:27] [Client thread/INFO] [FML]: Applying holder lookups
-[16:14:27] [Client thread/INFO] [FML]: Holder lookups applied
-[16:14:27] [Client thread/INFO] [FML]: Applying holder lookups
-[16:14:27] [Client thread/INFO] [FML]: Holder lookups applied
-[16:14:27] [Client thread/INFO] [FML]: Applying holder lookups
-[16:14:27] [Client thread/INFO] [FML]: Holder lookups applied
-[16:14:28] [Client thread/INFO] [FML]: Configured a dormant chunk cache size of 0
-[16:14:28] [Forge Version Check/INFO] [ForgeVersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
-[16:14:28] [Client thread/INFO]: [STDOUT]: Testing schemas against internal version number: 0.37
-[16:14:28] [Client thread/INFO] [FML]: Applying holder lookups
-[16:14:28] [Client thread/INFO] [FML]: Holder lookups applied
-[16:14:28] [Client thread/INFO] [FML]: Injecting itemstacks
-[16:14:28] [Client thread/INFO] [FML]: Itemstack injection complete
-[16:14:28] [Forge Version Check/INFO] [ForgeVersionCheck]: [forge] Found status: OUTDATED Target: 13.20.1.2386
-[16:14:30] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[16:14:30] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[16:14:30] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[16:14:30] [Thread-6/INFO]: OpenAL initialized.
-[16:14:31] [Sound Library Loader/INFO]: Sound engine started
-[16:14:34] [Client thread/INFO] [FML]: Max texture size: 16384
-[16:14:34] [Client thread/INFO]: Created: 16x16 textures-atlas
-[16:14:35] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_MOD_READY
-[16:14:35] [Client thread/INFO] [FML]: Injecting itemstacks
-[16:14:35] [Client thread/INFO] [FML]: Itemstack injection complete
-[16:14:35] [Client thread/INFO] [FML]: Forge Mod Loader has successfully loaded 5 mods
-[16:14:35] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Microsoft Malmo Mod
-[16:14:35] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:35] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:35] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
-[16:14:36] [Client thread/INFO]: SoundSystem shutting down...
-[16:14:36] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[16:14:36] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[16:14:37] [Thread-8/INFO]: Initializing LWJGL OpenAL
-[16:14:37] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[16:14:37] [Thread-8/INFO]: OpenAL initialized.
-[16:14:37] [Sound Library Loader/INFO]: Sound engine started
-[16:14:39] [Client thread/INFO] [FML]: Max texture size: 16384
-[16:14:39] [Client thread/INFO]: Created: 512x512 textures-atlas
-[16:14:41] [Client thread/WARN]: Skipping bad option: lastServer:
-[16:14:41] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_MOD_READY
-[16:14:41] [Thread-10/INFO]: [STDOUT]: INFO: ->mcp(0) Listening for messages on port 10000
-[16:14:41] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:14:41] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:14:43] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
-[16:15:35] [Thread-12/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:15:35] [Thread-12/INFO]: [STDOUT]: ==== RES:  - -1555283735339
-[16:15:35] [Thread-12/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:35] [Thread-14/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:15:36] [Thread-14/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:36] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:15:36] [Thread-15/INFO]: [STDOUT]: INFO: ->com(0) Listening for messages on port 10288
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_NEW_WORLD
-[16:15:36] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_NEW_WORLD
-[16:15:38] [Server thread/INFO]: Starting integrated minecraft server version 1.11.2
-[16:15:38] [Server thread/INFO]: Generating keypair
-[16:15:38] [Server thread/INFO] [FML]: Injecting existing block and item data into this server instance
-[16:15:38] [Server thread/INFO] [FML]: Applying holder lookups
-[16:15:38] [Server thread/INFO] [FML]: Holder lookups applied
-[16:15:38] [Server thread/INFO] [FML]: Loading dimension 0 (TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41) (net.minecraft.server.integrated.IntegratedServer@718c2b3d)
-[16:15:38] [Server thread/WARN]: Unable to find spawn biome
-[16:15:39] [Server thread/INFO] [FML]: Loading dimension 1 (TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41) (net.minecraft.server.integrated.IntegratedServer@718c2b3d)
-[16:15:39] [Server thread/INFO] [FML]: Loading dimension -1 (TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41) (net.minecraft.server.integrated.IntegratedServer@718c2b3d)
-[16:15:39] [Server thread/INFO]: Preparing start region for level 0
-[16:15:40] [Server thread/INFO]: Preparing spawn area: 90%
-[16:15:40] [Server thread/INFO]: Changing view distance to 6, from 10
-[16:15:41] [Client thread/INFO]: Deleting level TEMP_10000_f4e8949b-de00-468e-83cf-45a52cbda8f5
-[16:15:41] [Client thread/INFO]: Attempt 1...
-[16:15:41] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_MOD_READY
-[16:15:41] [Server thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:15:41] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:15:42] [Netty Local Client IO #0/INFO]: [STDOUT]: Transformed Name: net.minecraft.client.entity.EntityOtherPlayerMP
-[16:15:42] [Netty Local Client IO #0/INFO]: [STDOUT]: MALMO: Attempting to transform MinecraftServer
-[16:15:42] [Netty Local Client IO #0/INFO]: [STDOUT]: MALMO: Found EntityOtherPlayerMP, attempting to transform it
-[16:15:42] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_MOD_READY
-[16:15:42] [Netty Local Client IO #0/INFO] [FML]: Server protocol version 2
-[16:15:42] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:15:42] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:15:42] [Netty Server IO #1/INFO] [FML]: Client protocol version 2
-[16:15:42] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through ServerStateMachine constructor.
-[16:15:42] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:42] [Server thread/INFO]: Received mission: §9Hello world!
-[16:15:42] [Server thread/INFO]: Source: §alocalhost
-[16:15:42] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:15:42] [Netty Server IO #1/INFO] [FML]: Client attempting to join with 5 mods : minecraft@1.11.2,FML@8.0.99.99,malmomod@0.37.0,forge@13.20.0.2228,mcp@9.19
-[16:15:42] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:15:42] [Netty Local Client IO #0/INFO] [FML]: [Netty Local Client IO #0] Client side modded connection established
-[16:15:43] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:15:43] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:43] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:43] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:15:43] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:15:43] [Server thread/INFO] [FML]: [Server thread] Server side modded connection established
-[16:15:43] [Server thread/INFO]: CS175AwesomeMazeBot[local:E:af22f63a] logged in with entity id 0 at (-236.5, 56.0, -1576.5)
-[16:15:43] [Server thread/INFO]: CS175AwesomeMazeBot joined the game
-[16:15:45] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:45] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:46] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:15:46] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:15:46] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:15:46] [Client thread/INFO]: [STDOUT]: Resized the window
-2019-04-14 16:15:46.067 java[48928:2631923] WARNING: NSWindow drag regions should only be invalidated on the Main Thread! This will throw an exception in the future. Called from (
-	0   AppKit                              0x00007fff4a7e1824 -[NSWindow(NSWindow_Theme) _postWindowNeedsToResetDragMarginsUnlessPostingDisabled] + 386
-	1   AppKit                              0x00007fff4a8e6d83 -[NSThemeFrame setStyleMask:] + 135
-	2   AppKit                              0x00007fff4a8e6bda __25-[NSWindow setStyleMask:]_block_invoke + 1918
-	3   AppKit                              0x00007fff4a7996ce NSPerformVisuallyAtomicChange + 132
-	4   AppKit                              0x00007fff4a8e6411 -[NSWindow setStyleMask:] + 184
-	5   liblwjgl.dylib                      0x0000000120e2aee2 Java_org_lwjgl_opengl_MacOSXDisplay_nSetResizable + 82
-	6   ???                                 0x000000010da79667 0x0 + 4524054119
+[23:46:38] [main/INFO] [GradleStart]: Extra: []
+[23:46:38] [main/INFO] [GradleStart]: Found and added coremod: com.microsoft.Malmo.OverclockingPlugin
+[23:46:38] [main/INFO] [GradleStart]: Running with arguments: [--userProperties, {}, --assetsDir, /Users/andrei/.gradle/caches/minecraft/assets, --assetIndex, 1.11, --accessToken{REDACTED}, --version, 1.11.2, --tweakClass, net.minecraftforge.fml.common.launcher.FMLTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
+[23:46:38] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[23:46:38] [main/INFO] [LaunchWrapper]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[23:46:38] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
+[23:46:38] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLTweaker
+[23:46:39] [main/INFO] [FML]: Forge Mod Loader version 13.20.0.2228 for Minecraft 1.11.2 loading
+[23:46:39] [main/INFO] [FML]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_202, running on Mac OS X:x86_64:10.14.1, installed at /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre
+[23:46:39] [main/INFO] [FML]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
+[23:46:39] [main/INFO] [FML]: Found a command line coremod : com.microsoft.Malmo.OverclockingPlugin
+[23:46:39] [main/WARN] [FML]: The coremod com.microsoft.Malmo.OverclockingPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
+[23:46:39] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
+[23:46:39] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
+[23:46:39] [main/INFO] [GradleStart]: Injecting location in coremod com.microsoft.Malmo.OverclockingPlugin
+[23:46:39] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:46:39] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[23:46:39] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:46:39] [main/ERROR] [FML]: The binary patch set is missing. Either you are in a development environment, or things are not going to work!
+[23:46:39] [main/ERROR] [FML]: FML appears to be missing any signature data. This is not a good thing
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:46:39] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[23:46:40] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[23:46:40] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[23:46:40] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[23:46:40] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:58]: MALMO: Attempting to transform MinecraftServer
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:187]: MALMO: Found Minecraft, attempting to transform it
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:193]: MALMO: Found Minecraft.runGameLoop() method, attempting to transform it
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockRenderer:208]: MALMO: Hooked into call to Minecraft.updateDisplay()
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:42]: Transformed Name: net.minecraft.client.entity.EntityPlayerSP
+[23:46:40] [main/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:42]: Transformed Name: net.minecraft.client.entity.AbstractClientPlayer
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:transform:58]: MALMO: Attempting to transform MinecraftServer
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:123]: MALMO: Found MinecraftServer, attempting to transform it
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:129]: MALMO: Found MinecraftServer.run() method, attempting to transform it
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
+[23:46:41] [Client thread/INFO] [STDOUT]: [com.microsoft.Malmo.OverclockingClassTransformer:overclockServer:137]: MALMO: Transforming LDC
+[23:46:41] [Client thread/INFO]: Setting user: Player335
+[23:46:46] [Client thread/WARN]: Skipping bad option: lastServer:
+[23:46:46] [Client thread/INFO]: LWJGL Version: 2.9.2
+[23:46:47] [Client thread/INFO]: [STDOUT]: MALMO: Attempting to transform MinecraftServer
+[23:46:47] [Client thread/INFO]: [STDOUT]: MALMO: Found GlStateManager, attempting to transform it
+[23:46:47] [Client thread/INFO]: [STDOUT]: MALMO: Found GlStateManager.bindTexture() method, attempting to transform it
+[23:46:47] [Client thread/INFO]: [STDOUT]: MALMO: Hooked into call to GlStateManager.bindTexture()
+[23:46:47] [Client thread/INFO] [FML]: MinecraftForge v13.20.0.2228 Initialized
+[23:46:47] [Client thread/INFO] [FML]: Replaced 232 ore recipes
+[23:46:47] [Client thread/INFO] [FML]: Found 0 mods from the command line. Injecting into mod discoverer
+[23:46:47] [Client thread/INFO] [FML]: Searching /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/run/mods for mods
+[23:46:49] [Client thread/INFO] [FML]: Forge Mod Loader has identified 5 mods to load
+[23:46:49] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, malmomod] at CLIENT
+[23:46:49] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, malmomod] at SERVER
+[23:46:50] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Microsoft Malmo Mod
+[23:46:50] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:50] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:50] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:50] [Client thread/INFO] [FML]: Processing ObjectHolder annotations
+[23:46:50] [Client thread/INFO] [FML]: Found 444 ObjectHolder annotations
+[23:46:50] [Client thread/INFO] [FML]: Identifying ItemStackHolder annotations
+[23:46:50] [Client thread/INFO] [FML]: Found 0 ItemStackHolder annotations
+[23:46:50] [Client thread/INFO] [FML]: Applying holder lookups
+[23:46:50] [Client thread/INFO] [FML]: Holder lookups applied
+[23:46:50] [Client thread/INFO] [FML]: Applying holder lookups
+[23:46:50] [Client thread/INFO] [FML]: Holder lookups applied
+[23:46:50] [Client thread/INFO] [FML]: Applying holder lookups
+[23:46:50] [Client thread/INFO] [FML]: Holder lookups applied
+[23:46:50] [Client thread/INFO] [FML]: Configured a dormant chunk cache size of 0
+[23:46:50] [Forge Version Check/INFO] [ForgeVersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[23:46:50] [Client thread/INFO]: [STDOUT]: Testing schemas against internal version number: 0.37
+[23:46:50] [Forge Version Check/INFO] [ForgeVersionCheck]: [forge] Found status: OUTDATED Target: 13.20.1.2386
+[23:46:50] [Client thread/INFO] [FML]: Applying holder lookups
+[23:46:50] [Client thread/INFO] [FML]: Holder lookups applied
+[23:46:50] [Client thread/INFO] [FML]: Injecting itemstacks
+[23:46:50] [Client thread/INFO] [FML]: Itemstack injection complete
+[23:46:52] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[23:46:53] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[23:46:53] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[23:46:53] [Thread-6/INFO]: OpenAL initialized.
+[23:46:53] [Sound Library Loader/INFO]: Sound engine started
+[23:46:56] [Client thread/INFO] [FML]: Max texture size: 16384
+[23:46:56] [Client thread/INFO]: Created: 16x16 textures-atlas
+[23:46:57] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_MOD_READY
+[23:46:57] [Client thread/INFO] [FML]: Injecting itemstacks
+[23:46:57] [Client thread/INFO] [FML]: Itemstack injection complete
+[23:46:57] [Client thread/INFO] [FML]: Forge Mod Loader has successfully loaded 5 mods
+[23:46:57] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Microsoft Malmo Mod
+[23:46:57] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:57] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:57] [Client thread/WARN]: ResourcePack: ignored non-lowercase namespace: MalmoMod in /Volumes/Extreme_SSD/175Proj/MalmoProj/Minecraft/build/libs/MalmoMod-0.37.0.jar
+[23:46:58] [Client thread/INFO]: SoundSystem shutting down...
+[23:46:58] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[23:46:58] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[23:46:59] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[23:46:59] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[23:46:59] [Thread-8/INFO]: OpenAL initialized.
+[23:46:59] [Sound Library Loader/INFO]: Sound engine started
+[23:47:01] [Client thread/INFO] [FML]: Max texture size: 16384
+[23:47:01] [Client thread/INFO]: Created: 512x512 textures-atlas
+[23:47:03] [Client thread/WARN]: Skipping bad option: lastServer:
+[23:47:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_MOD_READY
+[23:47:03] [Thread-10/INFO]: [STDOUT]: INFO: ->mcp(0) Listening for messages on port 10000
+[23:47:03] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
+[23:47:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
+[23:47:05] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[23:47:05] [Thread-12/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Odie
+[23:47:05] [Thread-12/INFO]: [STDOUT]: ==== RES:  - -1557470825984
+[23:47:05] [Thread-12/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
+[23:47:05] [Thread-14/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                    <About>                    <Summary>Fetch boy #0</Summary></About><ModSettings>                    <MsPerTick>100</MsPerTick></ModSettings><ServerSection>                                <ServerInitialConditions>                                                            <Time>                                                        <StartTime>6000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather><AllowSpawning>false</AllowSpawning></ServerInitialConditions><ServerHandlers>                                                            <FlatWorldGenerator generatorString="3;7,220*1,5*3,2;3;,biome_1"/><DrawingDecorator>                                                                                                                                   
+[23:47:07] [Thread-14/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
+[23:47:07] [Client thread/INFO]: [STDOUT]: Mission received: Fetch boy #0
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
+[23:47:07] [Thread-15/INFO]: [STDOUT]: INFO: ->com(0) Listening for messages on port 10470
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_NEW_WORLD
+[23:47:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_NEW_WORLD
+[23:47:09] [Server thread/INFO]: Starting integrated minecraft server version 1.11.2
+[23:47:09] [Server thread/INFO]: Generating keypair
+[23:47:09] [Server thread/INFO] [FML]: Injecting existing block and item data into this server instance
+[23:47:09] [Server thread/INFO] [FML]: Applying holder lookups
+[23:47:09] [Server thread/INFO] [FML]: Holder lookups applied
+[23:47:09] [Server thread/INFO] [FML]: Loading dimension 0 (TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7) (net.minecraft.server.integrated.IntegratedServer@1f9ea83)
+[23:47:09] [Server thread/WARN]: Unable to find spawn biome
+[23:47:13] [Server thread/INFO] [FML]: Loading dimension 1 (TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7) (net.minecraft.server.integrated.IntegratedServer@1f9ea83)
+[23:47:13] [Server thread/INFO] [FML]: Loading dimension -1 (TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7) (net.minecraft.server.integrated.IntegratedServer@1f9ea83)
+[23:47:13] [Server thread/INFO]: Preparing start region for level 0
+[23:47:14] [Server thread/INFO]: Preparing spawn area: 22%
+[23:47:15] [Server thread/INFO]: Preparing spawn area: 47%
+[23:47:16] [Server thread/INFO]: Preparing spawn area: 72%
+[23:47:17] [Server thread/INFO]: Preparing spawn area: 74%
+[23:47:18] [Server thread/INFO]: Preparing spawn area: 99%
+[23:47:18] [Server thread/INFO]: Changing view distance to 6, from 10
+[23:47:19] [Client thread/INFO]: Deleting level TEMP_10000_1b8ac649-64eb-4cf4-a8e8-aaf1a5f22056
+[23:47:19] [Client thread/INFO]: Attempt 1...
+[23:47:19] [Netty Local Client IO #0/INFO]: [STDOUT]: Transformed Name: net.minecraft.client.entity.EntityOtherPlayerMP
+[23:47:19] [Netty Local Client IO #0/INFO]: [STDOUT]: MALMO: Attempting to transform MinecraftServer
+[23:47:19] [Netty Local Client IO #0/INFO]: [STDOUT]: MALMO: Found EntityOtherPlayerMP, attempting to transform it
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_MOD_READY
+[23:47:19] [Server thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
+[23:47:19] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
+[23:47:19] [Netty Local Client IO #0/INFO] [FML]: Server protocol version 2
+[23:47:19] [Netty Server IO #1/INFO] [FML]: Client protocol version 2
+[23:47:19] [Netty Server IO #1/INFO] [FML]: Client attempting to join with 5 mods : minecraft@1.11.2,FML@8.0.99.99,malmomod@0.37.0,forge@13.20.0.2228,mcp@9.19
+[23:47:19] [Netty Local Client IO #0/INFO] [FML]: [Netty Local Client IO #0] Client side modded connection established
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_MOD_READY
+[23:47:19] [Server thread/INFO] [FML]: [Server thread] Server side modded connection established
+[23:47:19] [Server thread/INFO]: Odie[local:E:82175ad4] logged in with entity id 0 at (-1826.5, 227.0, 1091.5)
+[23:47:19] [Server thread/INFO]: Odie joined the game
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
+[23:47:19] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through ServerStateMachine constructor.
+[23:47:19] [Server thread/INFO]: [STDOUT]: Mission received: Fetch boy #0
+[23:47:19] [Server thread/INFO]: Received mission: §9Fetch boy #0
+[23:47:19] [Server thread/INFO]: Source: §alocalhost
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
+[23:47:19] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
+[23:47:21] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - Odie
+[23:47:21] [Client thread/INFO]: [CHAT] Received mission: §9Fetch boy #0
+[23:47:21] [Client thread/INFO]: [CHAT] Source: §alocalhost
+[23:47:22] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
+[23:47:22] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
+[23:47:22] [Server thread/INFO]: [STDOUT]: Experiment requires: 
+[23:47:22] [Server thread/INFO]: [STDOUT]: >>>> Odie
+[23:47:22] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - Odie
+[23:47:22] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2785ms behind, skipping 55 tick(s)
+[23:47:23] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
+[23:47:23] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
+[23:47:23] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
+[23:47:23] [Client thread/INFO]: [STDOUT]: Resized the window
+2019-05-09 23:47:23.435 java[35909:1472642] WARNING: NSWindow drag regions should only be invalidated on the Main Thread! This will throw an exception in the future. Called from (
+	0   AppKit                              0x00007fff37b80824 -[NSWindow(NSWindow_Theme) _postWindowNeedsToResetDragMarginsUnlessPostingDisabled] + 386
+	1   AppKit                              0x00007fff37c85d83 -[NSThemeFrame setStyleMask:] + 135
+	2   AppKit                              0x00007fff37c85bda __25-[NSWindow setStyleMask:]_block_invoke + 1918
+	3   AppKit                              0x00007fff37b386ce NSPerformVisuallyAtomicChange + 132
+	4   AppKit                              0x00007fff37c85411 -[NSWindow setStyleMask:] + 184
+	5   liblwjgl.dylib                      0x0000000127e70ee2 Java_org_lwjgl_opengl_MacOSXDisplay_nSetResizable + 82
+	6   ???                                 0x000000010c8ae667 0x0 + 4505396839
 )
-[16:15:46] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:15:46] [Client thread/INFO]: [CHAT] §l10...
-[16:15:47] [Server thread/INFO]: [STDOUT]: Warning: managed 8/20 ticks this second.
-[16:15:47] [Client thread/INFO]: [CHAT] §l9...
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:15:47] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10163.
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:15:47] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:15:47] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:15:47] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:15:49] [Thread-20/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-1
-[16:15:49] [Thread-20/INFO]: [STDOUT]: ==== RES:  - 5773
-[16:15:49] [Thread-20/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:49] [Thread-22/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:15:49] [Thread-22/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:49] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:15:49] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:15:49] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:49] [Server thread/INFO]: Received mission: §9Hello world!
-[16:15:49] [Server thread/INFO]: Source: §alocalhost
-[16:15:49] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:15:49] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:15:49] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:15:49] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:15:49] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:49] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:15:49] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:49] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:49] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:15:49] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:15:49] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:15:49] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:15:50] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:15:50] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:15:50] [Client thread/INFO]: [CHAT] §l10...
-[16:15:51] [Client thread/INFO]: [CHAT] §l9...
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:15:51] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:51] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:15:51] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10163.
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:15:51] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:15:51] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:15:51] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:15:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:15:51] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:15:52] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:15:52] [Server thread/INFO]: Saving and pausing game...
-[16:15:52] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Overworld
-[16:15:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Nether
-[16:15:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/The End
-[16:15:53] [Thread-26/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-2
-[16:15:53] [Thread-26/INFO]: [STDOUT]: ==== RES:  - 16053
-[16:15:53] [Thread-26/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:53] [Thread-28/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:15:53] [Thread-28/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:53] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:15:53] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:53] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:15:53] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:53] [Server thread/INFO]: Received mission: §9Hello world!
-[16:15:53] [Server thread/INFO]: Source: §alocalhost
-[16:15:53] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:15:53] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:15:53] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:15:53] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:15:53] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:15:53] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:53] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:53] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:15:53] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:15:53] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:15:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:15:54] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:15:54] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:15:54] [Client thread/INFO]: [CHAT] §l10...
-[16:15:55] [Client thread/INFO]: [CHAT] §l9...
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:15:55] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10163.
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:15:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:15:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:15:55] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:15:57] [Thread-32/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-3
-[16:15:57] [Thread-32/INFO]: [STDOUT]: ==== RES:  - 16423
-[16:15:57] [Thread-32/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:57] [Thread-34/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:15:57] [Thread-34/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:15:57] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:15:57] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:57] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:15:57] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:15:57] [Server thread/INFO]: Received mission: §9Hello world!
-[16:15:57] [Server thread/INFO]: Source: §alocalhost
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:15:57] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:15:57] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:15:57] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:15:57] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:15:57] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:15:57] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:15:57] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:15:57] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:15:57] [Client thread/INFO]: [CHAT] §l10...
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:15:58] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:58] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:15:58] [Client thread/INFO]: [CHAT] §l9...
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:15:58] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10163.
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:15:58] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:15:58] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:15:58] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:15:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:15:58] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:15:59] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:16:00] [Thread-38/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-4
-[16:16:00] [Thread-38/INFO]: [STDOUT]: ==== RES:  - 16440
-[16:16:00] [Thread-38/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:16:00] [Thread-40/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:16:00] [Thread-40/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:16:00] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:16:00] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:16:00] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:16:00] [Server thread/INFO]: Received mission: §9Hello world!
-[16:16:00] [Server thread/INFO]: Source: §alocalhost
-[16:16:00] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:16:00] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:16:00] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:16:00] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:16:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:16:00] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:16:00] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:16:00] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:16:00] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:16:00] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:16:00] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:16:01] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:16:01] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:16:01] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:16:01] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:16:01] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:16:01] [Client thread/INFO]: [CHAT] §l10...
-[16:16:01] [Server thread/INFO]: Saving and pausing game...
-[16:16:01] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Overworld
-[16:16:01] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Nether
-[16:16:01] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/The End
-[16:16:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:16:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:16:08] [Thread-44/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:16:08] [Thread-44/INFO]: [STDOUT]: REPLYING WITH: MALMOBUSY
-[16:16:10] [Thread-46/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:16:10] [Thread-46/INFO]: [STDOUT]: REPLYING WITH: MALMOBUSY
-[16:16:12] [Thread-48/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:16:12] [Thread-48/INFO]: [STDOUT]: REPLYING WITH: MALMOBUSY
-[16:16:15] [Server thread/INFO]: [STDOUT]: Warning: managed 11/20 ticks this second.
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:16:15] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10163.
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:16:15] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:16:15] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:16:15] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:16:16] [Thread-50/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:16:16] [Thread-50/INFO]: [STDOUT]: ==== RES:  - 3679
-[16:16:16] [Thread-50/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:16:16] [Thread-52/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:16:17] [Thread-52/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:16:17] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:16:17] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:16:17] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:16:17] [Server thread/INFO]: Received mission: §9Hello world!
-[16:16:17] [Server thread/INFO]: Source: §alocalhost
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:16:17] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:16:17] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:16:17] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:16:17] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:16:17] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:16:17] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:16:17] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:16:17] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:16:17] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:16:17] [Client thread/INFO]: [CHAT] §l10...
-[16:16:18] [Client thread/INFO]: [CHAT] §l9...
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:16:18] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:16:18] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:16:18] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10486.
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:16:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:16:18] [Server thread/INFO]: Saving and pausing game...
-[16:16:19] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Overworld
-[16:16:19] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Nether
-[16:16:19] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/The End
-[16:16:19] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:16:19] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:16:19] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:16:19] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:16:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:16:23] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:16:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:17:00] [Server thread/INFO]: Saving and pausing game...
-[16:17:00] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Overworld
-[16:17:00] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Nether
-[16:17:00] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/The End
-[16:17:02] [Thread-56/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:17:02] [Thread-56/INFO]: [STDOUT]: ==== RES:  - -25302
-[16:17:02] [Thread-56/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:17:02] [Thread-58/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:17:02] [Thread-58/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:17:02] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:17:02] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:17:02] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:17:02] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:17:02] [Server thread/INFO]: Received mission: §9Hello world!
-[16:17:02] [Server thread/INFO]: Source: §alocalhost
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:17:02] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:17:02] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:17:02] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:17:02] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:17:02] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:17:02] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:17:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:17:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:17:02] [Client thread/INFO]: [CHAT] §l10...
-[16:17:03] [Client thread/INFO]: [CHAT] §l9...
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:17:04] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10578.
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:17:04] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:17:04] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:17:04] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:17:06] [Thread-62/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-1
-[16:17:06] [Thread-62/INFO]: [STDOUT]: ==== RES:  - 16140
-[16:17:06] [Thread-62/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:17:06] [Thread-64/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:17:06] [Thread-64/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:17:06] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:17:06] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:17:06] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:17:06] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:17:06] [Server thread/INFO]: Received mission: §9Hello world!
-[16:17:06] [Server thread/INFO]: Source: §alocalhost
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:17:06] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:17:06] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:17:06] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:17:06] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:17:06] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:17:06] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:17:06] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:17:06] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:17:06] [Client thread/INFO]: [CHAT] §l10...
-[16:17:07] [Client thread/INFO]: [STDOUT]: SEVERE: <-vid(localhost:10818) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
+[23:47:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
+[23:47:24] [Server thread/INFO]: [STDOUT]: Warning: managed 9/10 ticks this second.
+[23:47:25] [Client thread/INFO]: [STDOUT]: Toggling control between human and AI - now HUMAN
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-vid(localhost:10701) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
 Failed to send frame - will retry in 5 seconds
-[16:17:07] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10727) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
-[16:17:07] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10727) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:17:07] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10727) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:17:07] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10727) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:17:07] [Client thread/INFO]: [STDOUT]: ERROR: TCP messages are not getting through - quitting mission.
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:17:07] [Client thread/INFO]: [CHAT] §l9...
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:17:07] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10578.
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:17:07] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:17:07] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:17:07] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:08] [Server thread/INFO]: Saving and pausing game...
-[16:18:08] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Overworld
-[16:18:08] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/Nether
-[16:18:08] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_2ae7e78f-1e91-4b9b-94e4-337bbb8a2c41'/The End
-[16:18:12] [Thread-68/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:18:12] [Thread-68/INFO]: [STDOUT]: ==== RES:  - -46016
-[16:18:12] [Thread-68/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:12] [Thread-70/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:12] [Thread-70/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:12] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:12] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:12] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:12] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:12] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:12] [Server thread/INFO]: Source: §alocalhost
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:12] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:12] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:12] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:12] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:12] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:12] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:12] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:12] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:12] [Client thread/INFO]: [CHAT] §l10...
-[16:18:13] [Client thread/INFO]: [CHAT] §l9...
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:14] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10184.
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:14] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:14] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:14] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:16] [Thread-74/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-1
-[16:18:16] [Thread-74/INFO]: [STDOUT]: ==== RES:  - 16013
-[16:18:16] [Thread-74/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:16] [Thread-76/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:16] [Thread-76/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:16] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:16] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:16] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:16] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:16] [Server thread/INFO]: Source: §alocalhost
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:16] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:16] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:16] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:16] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:16] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:16] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:16] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:16] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:16] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:16] [Client thread/INFO]: [CHAT] §l10...
-[16:18:17] [Client thread/INFO]: [CHAT] §l9...
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:18] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10184.
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:18] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:18] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:18] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:20] [Thread-80/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-2
-[16:18:20] [Thread-80/INFO]: [STDOUT]: ==== RES:  - 16035
-[16:18:20] [Thread-80/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:20] [Thread-82/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:20] [Thread-82/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:20] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:20] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:20] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:20] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:20] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:20] [Server thread/INFO]: Source: §alocalhost
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:20] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:20] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:20] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:20] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:20] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:20] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:20] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:20] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:20] [Client thread/INFO]: [CHAT] §l10...
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:21] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10184.
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:21] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:21] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:21] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:23] [Thread-86/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-3
-[16:18:23] [Thread-86/INFO]: [STDOUT]: ==== RES:  - 16564
-[16:18:23] [Thread-86/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:23] [Thread-88/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:23] [Thread-88/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:23] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:23] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:23] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:23] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:23] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:23] [Server thread/INFO]: Source: §alocalhost
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:23] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:23] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:23] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:23] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:23] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:23] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:23] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:23] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:24] [Client thread/INFO]: [CHAT] §l10...
-[16:18:25] [Client thread/INFO]: [CHAT] §l9...
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:25] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10184.
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:25] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:25] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:25] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:26] [Thread-92/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-4
-[16:18:26] [Thread-92/INFO]: [STDOUT]: ==== RES:  - 16541
-[16:18:26] [Thread-92/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:27] [Thread-94/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:27] [Thread-94/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:27] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:27] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:27] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:27] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:27] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:27] [Server thread/INFO]: Source: §alocalhost
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:27] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:27] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:27] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:27] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:27] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:27] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:27] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:27] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:27] [Client thread/INFO]: [CHAT] §l10...
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-vid(localhost:10181) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
-Failed to send frame - will retry in 5 seconds
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10343) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10343) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10343) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10343) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
-[16:18:28] [Client thread/INFO]: [STDOUT]: ERROR: TCP messages are not getting through - quitting mission.
-[16:18:28] [Client thread/INFO]: [CHAT] §l9...
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:28] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10184.
-[16:18:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-mcp(localhost:10184) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:28] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:28] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:50] [Thread-98/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-0
-[16:18:50] [Thread-98/INFO]: [STDOUT]: ==== RES:  - -3969
-[16:18:50] [Thread-98/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:50] [Thread-100/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:50] [Thread-100/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:51] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:51] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:51] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:51] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:51] [Server thread/INFO]: Source: §alocalhost
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:51] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:51] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:51] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:51] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:51] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:51] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:51] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:51] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:51] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:51] [Client thread/INFO]: [CHAT] §l10...
-[16:18:52] [Client thread/INFO]: [CHAT] §l9...
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:53] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10791.
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:53] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:53] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:53] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:54] [Thread-104/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-1
-[16:18:54] [Thread-104/INFO]: [STDOUT]: ==== RES:  - 16013
-[16:18:54] [Thread-104/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:54] [Thread-106/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:54] [Thread-106/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:55] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:55] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:55] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:55] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:55] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:55] [Server thread/INFO]: Source: §alocalhost
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:55] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:55] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:55] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:55] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:55] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:55] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:55] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:55] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:55] [Client thread/INFO]: [CHAT] §l10...
-[16:18:56] [Client thread/INFO]: [CHAT] §l9...
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:18:56] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:56] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:18:56] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10791.
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:18:56] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:18:56] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:18:56] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:18:56] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:18:56] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:18:57] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:18:58] [Thread-110/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-2
-[16:18:58] [Thread-110/INFO]: [STDOUT]: ==== RES:  - 16138
-[16:18:58] [Thread-110/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:58] [Thread-112/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:18:58] [Thread-112/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:18:58] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:18:58] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:18:58] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:18:58] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:18:58] [Server thread/INFO]: Received mission: §9Hello world!
-[16:18:58] [Server thread/INFO]: Source: §alocalhost
-[16:18:58] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:18:58] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:18:58] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:18:58] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:18:58] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:58] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:18:58] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:58] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:18:58] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:18:58] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:18:59] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:18:59] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:18:59] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:18:59] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:18:59] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:18:59] [Client thread/INFO]: [CHAT] §l10...
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:19:00] [Client thread/INFO]: [CHAT] §l9...
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:19:00] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10791.
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:19:00] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:19:00] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:19:00] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:19:02] [Thread-116/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-3
-[16:19:02] [Thread-116/INFO]: [STDOUT]: ==== RES:  - 16577
-[16:19:02] [Thread-116/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:19:02] [Thread-118/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:19:02] [Thread-118/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:19:02] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:19:02] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:19:02] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:19:02] [Server thread/INFO]: Received mission: §9Hello world!
-[16:19:02] [Server thread/INFO]: Source: §alocalhost
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:19:02] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:19:02] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:19:02] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:19:02] [Server thread/INFO]: [STDOUT]: Attempting to find subgoals...
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_ASSEMBLE
-[16:19:02] [Server thread/INFO]: [STDOUT]: Experiment requires: 
-[16:19:02] [Server thread/INFO]: [STDOUT]: >>>> CS175AwesomeMazeBot
-[16:19:02] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMazeBot
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT request state: RUNNING
-[16:19:02] [Client thread/INFO]: [STDOUT]: CLIENT enter state: RUNNING
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER request state: RUNNING
-[16:19:02] [Server thread/INFO]: [STDOUT]: SERVER enter state: RUNNING
-[16:19:02] [Client thread/INFO]: [CHAT] §l10...
-[16:19:03] [Client thread/INFO]: [CHAT] §l9...
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
-[16:19:03] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
-[16:19:03] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
-[16:19:03] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10791.
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
-[16:19:03] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
-[16:19:03] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
-[16:19:03] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
-[16:19:03] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
-[16:19:03] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
-[16:19:04] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
-[16:19:05] [Thread-122/INFO]: [STDOUT]: Received from localhost:MALMO_REQUEST_CLIENT:0.37.0:20000:Moshe-4
-[16:19:05] [Thread-122/INFO]: [STDOUT]: ==== RES:  - 16556
-[16:19:05] [Thread-122/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:19:05] [Thread-124/INFO]: [STDOUT]: Received from localhost:<?xml version="1.0" encoding="utf-8"?><MissionInit xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="" PlatformVersion="0.37.0"><Mission>                                                    <About>                              <Summary>Hello world!</Summary></About><ServerSection>                                          <ServerInitialConditions>                                              <Time>                                                        <StartTime>1000</StartTime><AllowPassageOfTime>false</AllowPassageOfTime></Time><Weather>clear</Weather></ServerInitialConditions><ServerHandlers>                                                                                                          <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/><DrawingDecorator>                                      <DrawSphere x="-27" y="70" z="0" radius="30" type="air"/></DrawingDecorator><MazeDeco
-[16:19:05] [Thread-124/INFO]: [STDOUT]: REPLYING WITH: MALMOOK
-[16:19:05] [Client thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT request state: CREATING_HANDLERS
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT enter state: CREATING_HANDLERS
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT request state: EVALUATING_WORLD_REQUIREMENTS
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT enter state: EVALUATING_WORLD_REQUIREMENTS
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_READY
-[16:19:05] [Server thread/INFO]: [STDOUT]: INCOMING MISSION: Received MissionInit directly through queue.
-[16:19:05] [Server thread/INFO]: [STDOUT]: Mission received: Hello world!
-[16:19:05] [Server thread/INFO]: Received mission: §9Hello world!
-[16:19:05] [Server thread/INFO]: Source: §alocalhost
-[16:19:05] [Server thread/INFO]: [STDOUT]: SERVER request state: BUILDING_WORLD
-[16:19:05] [Server thread/INFO]: [STDOUT]: SERVER enter state: BUILDING_WORLD
-[16:19:05] [Client thread/INFO]: [CHAT] Received mission: §9Hello world!
-[16:19:05] [Client thread/INFO]: [CHAT] Source: §alocalhost
-[16:19:05] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_READY
-[16:19:05] [Client thread/INFO]: [STDOUT]: ***Telling server we are ready - CS175AwesomeMa
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10180) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10180) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10180) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-obs(localhost:10180) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.nio.channels.ClosedChannelException
+[23:47:28] [Client thread/INFO]: [STDOUT]: ERROR: TCP messages are not getting through - quitting mission.
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: IDLING
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: IDLING
+[23:47:28] [Server thread/INFO]: [STDOUT]: SERVER request state: WAITING_FOR_AGENTS_TO_QUIT
+[23:47:28] [Server thread/INFO]: [STDOUT]: SERVER enter state: WAITING_FOR_AGENTS_TO_QUIT
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: MISSION_ENDED
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: MISSION_ENDED
+[23:47:28] [Client thread/INFO]: [STDOUT]: Sending mission ended message to localhost:10178.
+[23:47:28] [Client thread/INFO]: [STDOUT]: SEVERE: <-mcp(localhost:10178) Failed to send TCP bytes: java.util.concurrent.ExecutionException: java.io.IOException: Broken pipe
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: WAITING_FOR_SERVER_MISSION_END
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: WAITING_FOR_SERVER_MISSION_END
+[23:47:28] [Server thread/INFO]: [STDOUT]: SERVER request state: CLEAN_UP
+[23:47:28] [Server thread/INFO]: [STDOUT]: SERVER enter state: CLEAN_UP
+[23:47:28] [Server thread/INFO]: [STDOUT]: SERVER request state: DORMANT
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT request state: DORMANT
+[23:47:28] [Client thread/INFO]: [STDOUT]: CLIENT enter state: DORMANT
+[23:47:28] [Client thread/INFO]: [STDOUT]: JETTISONING 0 COMMANDS
+[23:47:29] [Server thread/INFO]: [STDOUT]: SERVER enter state: DORMANT
+[23:47:51] [Server thread/INFO]: Saving and pausing game...
+[23:47:51] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/Overworld
+[23:47:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/Nether
+[23:47:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/The End
+[23:47:53] [Client thread/INFO]: Stopping!
+[23:47:53] [Server thread/INFO]: Stopping server
+[23:47:53] [Server thread/INFO]: Saving players
+[23:47:53] [Server thread/INFO]: Saving worlds
+[23:47:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/Overworld
+[23:47:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/Nether
+[23:47:53] [Server thread/INFO]: Saving chunks for level 'TEMP_10000_8eab620c-9aab-49e9-b5dd-43ae2b72c2e7'/The End
+[23:47:55] [Server thread/INFO] [FML]: Unloading dimension 0
+[23:47:55] [Server thread/INFO] [FML]: Unloading dimension -1
+[23:47:55] [Server thread/INFO] [FML]: Unloading dimension 1
+[23:47:55] [Client thread/INFO]: SoundSystem shutting down...
+[23:47:55] [Server thread/INFO] [FML]: Applying holder lookups
+[23:47:55] [Server thread/INFO] [FML]: Holder lookups applied
+[23:47:55] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 32.648 secs
