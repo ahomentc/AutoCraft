@@ -20,9 +20,39 @@ from collections import defaultdict, deque
 from timeit import default_timer as timer
 from secrets import randbelow
 
+import torch
+import torch.nn as nn
+
 items=['dirt', 'diamond']
 
 lavaOrd=['lava','lava','lava']
+
+
+class DQN(nn.Module):
+
+    # sequential nn with 3 inputs 3 outputs
+    # also performing dropout to decrease overfit
+    def __init__(self, num_inputs, num_outputs):
+        super(DQN, self).__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(num_inputs, 30),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(30, num_outputs)
+        )
+
+    def forward(self, x):
+        return self.layers(x)
+
+    def act(self, state, eps):
+        rand = random.random()
+        if rand < eps: # epsilon random
+            return random.randrange(env.action_space.n) # returning random number in range of the number of actions available
+        else:
+            s = Variable(torch.FloatTensor(state))
+            qValue = self.forward(s)
+            return qValue.max(1)[1] # returns the max action from the nn output
+
 
 # need a way to map from lavaOrd and items to map coordinates
 
@@ -62,7 +92,7 @@ def getLavaDrawing(positions):
 	return drawing
 
 def getDirtDrawing(position):
-    return '<DrawBlock x="' + str(position[0]) + '" y="' + str(position[1]) + '" z="' + str(position[2]) + '" type="dirt" />'
+    return '<DrawBlock x="' + str(position[0]) + '" y="' + str(position[1]) + '" z="' + str(position[2]) + '" type="water" />'
 
 # returns an index from lavaOrd of the wrong choice to reveal
 def revealOneWrongChoice():
@@ -152,7 +182,7 @@ def GetMissionXML(summary):
 
     </Mission>'''
 
-class Odie(object):
+class Monty(object):
     def __init__(self, alpha=0.3, gamma=1, n=1):
         """Constructing an RL agent.
 
@@ -166,6 +196,14 @@ class Odie(object):
         self.n, self.alpha, self.gamma = n, alpha, gamma
         self.inventory = defaultdict(lambda: 0, {})
         self.num_items_in_inv = 0
+
+        # ------- Init the environemtn stuff here ----
+        # ex: 
+        #   self.action_space = spaces.Discrete(3) #which door
+        #   self.observation_space = spaces.Discrete(3)
+        #   self.state = None
+
+
 
     def clear_inventory(self):
         """Resets the inventory in case of a new attempt to fetch. """
@@ -448,7 +486,18 @@ class Odie(object):
                     break
 
 if __name__ == '__main__':
-    random.seed(0)
+
+    model = DQN(len(env.observation_space), len(env.action_space))
+    epocs = 1000
+    for epoc_num in range(epocs):
+        # epsilon = epsilon_by_frame(frame_idx)
+        # action = model.act(state, epsilon)
+        # next_state, reward, done, _ = env.step(int(action))
+
+
+    # -------- ASSIGNMENT 2 BELOW ---------
+
+
     #sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)  # flush print output immediately
     print('Starting...', flush=True)
 
