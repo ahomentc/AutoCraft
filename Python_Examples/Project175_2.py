@@ -203,74 +203,11 @@ class Monty(object):
         #   self.observation_space = spaces.Discrete(3)
         #   self.state = None
 
-
-
     def clear_inventory(self):
         """Resets the inventory in case of a new attempt to fetch. """
         self.inventory = defaultdict(lambda: 0, {})
         self.num_items_in_inv = 0
 
-    def get_crafting_options(self):
-        """Returns the objects that can be crafted from the inventory. """
-        import copy
-        craft_opt = []
-        inventory_items = []
-        for item, count in self.inventory.items():
-            for j in range(count):
-                inventory_items.append(item)
-
-        for item, recipe in food_recipes.items():
-            t_inventory_items = copy.deepcopy(inventory_items)
-            inter = []
-            for i in recipe:
-                if i in t_inventory_items:
-                    inter.append(i)
-                    t_inventory_items.remove(i)
-            if len(inter) == len(recipe):
-                craft_opt.append(item)
-
-        return craft_opt
-
-    @staticmethod
-    def get_obj_locations(agent_host):
-        """Queries for the object's location in the world.
-
-        As a side effect it also returns Odie's location.
-        """
-        nearyby_obs = {}
-        while True:
-            world_state = agent_host.getWorldState()
-            if world_state.number_of_observations_since_last_state > 0:
-                msg = world_state.observations[-1].text
-                ob = json.loads(msg)
-                for ent in  ob['entities']:
-                    name = ent['name']
-                    # if name != 'Odie':
-                    nearyby_obs[name] = (ent['yaw'], ent['x'], ent['z'])
-
-                return nearyby_obs
-
-    def was_item_picked(self, agent_host, item):
-        """Goes over the inventory observation and check if the item was picked. """
-        prev_item_count = self.inventory[item]
-        while True:
-            world_state = agent_host.getWorldState()
-            if world_state.number_of_observations_since_last_state > 0:
-                msg = world_state.observations[-1].text
-                ob = json.loads(msg)
-
-                for i in range(9):
-                    key = 'InventorySlot_%d_item' % i
-                    if key in ob:
-                        inv_item = ob[key]
-                        inv_counts = ob['InventorySlot_%d_size' % i]
-
-                        if inv_item == item and inv_counts > prev_item_count:
-                            return True
-                    else:
-                        break
-
-            return False
 
     def teleport(self, agent_host, teleport_x, teleport_z):
         """Directly teleport to a specific position."""
@@ -289,69 +226,6 @@ class Monty(object):
                 if math.fabs(frame_x - teleport_x) < 0.001 and math.fabs(frame_z - teleport_z) < 0.001:
                     good_frame = True
                     end_frame = timer()
-
-
-    def fetch_item(self, agent_host, item_to_pick):
-        """Finds the object in the world and picks it up (by teleporting to it).
-
-        Will not pick up the item if Odie has more than 3 items in his mouth :)
-        """
-        if self.num_items_in_inv > inventory_limit:
-            return
-        # teleport
-        obj_locs = self.get_obj_locations(agent_host)
-        my_yaw, my_x, my_z = obj_locs['Odie']
-        obj_yaw, obj_x, obj_z = obj_locs[item_to_pick]
-        self.teleport(agent_host, obj_x, obj_z)
-        time.sleep(0.1)  # Letting the host pick up on the things that were picked up
-        while True:
-            if self.was_item_picked(agent_host, item_to_pick) or item_to_pick not in obj_locs:
-                break
-        self.teleport(agent_host, 0.5, 0.5)
-        time.sleep(0.1)  # Letting the host pick up on the things that were picked up
-
-        self.inventory[item_to_pick] += 1
-        self.num_items_in_inv += 1
-
-    def craft_item(self, agent_host, item):
-        """Creates item from the current inventory.
-
-        Raised assertion error if any item is missing and will stop the whole process.
-        (so don't call it unless you're sure you have all the items, that's why the craft_option
-        method is for :) )
-
-        It replaces the item in the inventory dictionary.
-        """
-        items_needed = food_recipes[item]
-        for item_needed in items_needed:
-            self.inventory[item_needed] -= 1
-            self.num_items_in_inv -= 1
-            if self.inventory[item_needed] < 0:
-                raise AssertionError('Missing items for crafting: %s in %s' % (item_needed, str(self.inventory_items)))
-
-        agent_host.sendCommand('craft %s' % item)
-        self.inventory[item] += 1
-        self.num_items_in_inv += 1
-        time.sleep(0.25)
-
-    def present_gift(self, agent_host):
-        """Calculates the reward points for the current inventory.
-
-        Args
-            agent_host: the host object
-
-        Returns
-            reward:     <float> current reward from world state
-        """
-        current_r = 0
-        #time.sleep(0.1)
-
-        for item, counts in self.inventory.items():
-            current_r += rewards_map[item] * counts
-
-        agent_host.sendCommand('quit')
-        #time.sleep(0.25)
-        return current_r
 
     @staticmethod
     def is_solution(reward):
@@ -505,6 +379,11 @@ if __name__ == '__main__':
                 exit(1)
             else:
                 time.sleep(2)
+        world_state = agent_host.getWorldState()
+        while not world_state.has_mission_begun:
+            time.sleep(0.1)
+            world_state = agent_host.getWorldState()
+
 
 
     # -------- ASSIGNMENT 2 BELOW ---------
