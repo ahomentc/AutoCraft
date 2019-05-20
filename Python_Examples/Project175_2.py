@@ -493,6 +493,18 @@ if __name__ == '__main__':
         # epsilon = epsilon_by_frame(frame_idx)
         # action = model.act(state, epsilon)
         # next_state, reward, done, _ = env.step(int(action))
+        my_mission = MalmoPython.MissionSpec(GetMissionXML("Monty #" + str(epoc_num)), True)
+        try:
+            # Attempt to start the mission:
+            agent_host.startMission(my_mission, my_client_pool, my_mission_record, 0, "Odie")
+            break
+        except RuntimeError as e:
+            if retry == max_retries - 1:
+                print("Error starting mission", e)
+                print("Is the game running?")
+                exit(1)
+            else:
+                time.sleep(2)
 
 
     # -------- ASSIGNMENT 2 BELOW ---------
