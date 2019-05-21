@@ -25,7 +25,7 @@ import torch.nn as nn
 
 items=['dirt', 'diamond']
 
-lavaOrd=['lava','lava','lava']
+lavaOrd=['lava','lava','lava'] # hidden state
 
 
 class DQN(nn.Module):
@@ -197,11 +197,14 @@ class Monty(object):
         self.inventory = defaultdict(lambda: 0, {})
         self.num_items_in_inv = 0
 
-        # ------- Init the environemtn stuff here ----
-        # ex: 
-        #   self.action_space = spaces.Discrete(3) #which door
-        #   self.observation_space = spaces.Discrete(3)
-        #   self.state = None
+        # ------- Init the environment stuff here ----
+        # ex:
+        self.hidden_state      = lavaOrd     #would be better to take this as an argument
+        self.action_space      = [0, 1, 2]   #which door
+        #self.observation_space = ['air', 'air', 'air'] Not needed????
+        self.state             = {}
+        self.steps             = 0
+
 
     def clear_inventory(self):
         """Resets the inventory in case of a new attempt to fetch. """
@@ -226,6 +229,76 @@ class Monty(object):
                 if math.fabs(frame_x - teleport_x) < 0.001 and math.fabs(frame_z - teleport_z) < 0.001:
                     good_frame = True
                     end_frame = timer()
+
+    def step(self, action):
+        """ Checks for 1st choice and returns a door that is not the car door. """
+        if action not in self.action_space:
+            print("Error: action", action, "is illegal.")
+        reward = 0
+        if self.steps == 0:        ## 1st choice of Monty
+            reward += 0.33
+            self.state[action] = 1 ##chosen: state=1, not chosen: state=0, opened(by host): state=2
+            if action == 0:
+                if self.hidden_state[1] == 'water':  ## dirt
+                    self.state[2] = 2
+                    self.hidden_state[2] = 'opened'
+                elif self.hidden_state[2] == 'water':
+                    self.state[1] = 2
+                    self.hidden_state[1] = 'opened'
+            elif action == 1:
+                if self.hidden_state[0] == 'water':
+                    self.state[2] = 2
+                    self.hidden_state[2] = 'opened'
+                elif self.hidden_state[2] == 'water':
+                    self.state[0] = 2
+                    self.hidden_state[0] = 'opened'
+            elif action == 2:
+                if self.hidden_state[0] == 'water':
+                    self.state[1] = 2
+                    self.hidden_state[1] = 'opened'
+                elif self.hidden_state[1] == 'water':
+                    self.state[0] = 2
+                    self.hidden_state[0] = 'opened'
+        elif self.steps == 1:     ##Monty chooses a second time and computes reward
+            for k in self.state.keys():
+                if self.state[k] == 1:
+                    self.state[k] = 0
+            self.state[action] = 1
+            total = 0
+            for i in range(3):
+                if self.hidden_state[i] == 'water':
+                    total += self.state[i] - 1
+                elif self.hidden_state[i] == 'opened':
+                    total += self.state[i] - 2
+                elif self.hidden_state[i] == 'lava':
+                    total += self.state[i] - 0
+            if total == 0:
+                reward += 1.0
+        self.steps+=1
+        if self.steps == 2:  ## return state, reward, completion, {}
+            return self.state, reward, True, {}
+        return self.state,reward, False, {}
+
+
+    def present_gift(self, agent_host):
+        """Calculates the reward points for the current inventory.
+
+        Args
+            agent_host: the host object
+
+        Returns
+            reward:     <float> current reward from world state
+        """
+        current_r = 0
+        #time.sleep(0.1)
+
+        for item, counts in self.inventory.items():
+            current_r += rewards_map[item] * counts
+
+        agent_host.sendCommand('quit')
+        #time.sleep(0.25)
+        return current_r
+
 
     @staticmethod
     def is_solution(reward):
