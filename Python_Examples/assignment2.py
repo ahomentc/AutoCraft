@@ -220,7 +220,6 @@ class Odie(object):
                     good_frame = True
                     end_frame = timer()
 
-
     def fetch_item(self, agent_host, item_to_pick):
         """Finds the object in the world and picks it up (by teleporting to it).
 
