@@ -22,35 +22,6 @@ items=['dirt', 'diamond']
 
 lavaOrd=['lava','lava','lava'] # hidden state
 
-
-class DQN(nn.Module):
-
-    # sequential nn with 3 inputs 3 outputs
-    # also performing dropout to decrease overfit
-    def __init__(self, num_inputs, num_outputs):
-        super(DQN, self).__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(num_inputs, 30),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(30, num_outputs)
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-
-    def act(self, state, eps):
-        rand = random.random()
-        if rand < eps: # epsilon random
-            return random.randrange(env.action_space.n) # returning random number in range of the number of actions available
-        else:
-            s = Variable(torch.FloatTensor(state))
-            qValue = self.forward(s)
-            return qValue.max(1)[1] # returns the max action from the nn output
-
-
-# need a way to map from lavaOrd and items to map coordinates
-
 # randomly set lava to two locations and dirt to one
 def setCorrectLoc():
 	correctLoc = randbelow(3)
@@ -189,23 +160,14 @@ class Monty(object):
         self.epsilon = 0.2  # chance of taking a random action instead of the best
         self.q_table = {}
         self.n, self.alpha, self.gamma = n, alpha, gamma
-        self.inventory = defaultdict(lambda: 0, {})
-        self.num_items_in_inv = 0
 
         # ------- Init the environment stuff here ----
         # ex:
         self.hidden_state      = lavaOrd     #would be better to take this as an argument
         self.action_space      = [0, 1, 2]   #which door
-        #self.observation_space = ['air', 'air', 'air'] Not needed????
+        #self.observation_space = ['air', 'air', 'air'] Not needed???? Prob not
         self.state             = {}
         self.steps             = 0
-
-
-    def clear_inventory(self):
-        """Resets the inventory in case of a new attempt to fetch. """
-        self.inventory = defaultdict(lambda: 0, {})
-        self.num_items_in_inv = 0
-
 
     def teleport(self, agent_host, teleport_x, teleport_z):
         """Directly teleport to a specific position."""
@@ -227,6 +189,14 @@ class Monty(object):
 
     def step(self, action):
         """ Checks for 1st choice and returns a door that is not the car door. """
+
+        '''
+        TODO: MAYBE MAKE THE REWARD DEPEND ON THE ACTUAL EVENT THAT HAPPENS IN THE GAME.
+        LIKE YOU YOU FALL IN LAVA AND DIE. DYING GIVES A NEGATIVE REWARD.
+        MAYBE DO THIS LATER THOUGH
+
+        '''
+
         if action not in self.action_space:
             print("Error: action", action, "is illegal.")
         reward = 0
@@ -275,56 +245,12 @@ class Monty(object):
         return self.state,reward, False, {}
 
 
-    def present_gift(self, agent_host):
-        """Calculates the reward points for the current inventory.
-
-        Args
-            agent_host: the host object
-
-        Returns
-            reward:     <float> current reward from world state
-        """
-        current_r = 0
-        #time.sleep(0.1)
-
-        for item, counts in self.inventory.items():
-            current_r += rewards_map[item] * counts
-
-        agent_host.sendCommand('quit')
-        #time.sleep(0.25)
-        return current_r
-
-
-    @staticmethod
-    def is_solution(reward):
-        """If the reward equals to the maximum reward possible returns True, False otherwise. """
-        return submission.is_solution(reward)
-
     def get_possible_actions(self, agent_host, is_first_action=False):
-        """Returns all possible actions that can be done at the current state. """
-        action_list = []
-        if not is_first_action:
-            # Not allowing Odie to come back empty.
-            action_list = ['present_gift']
-
-        craft_opt = self.get_crafting_options()
-        if len(craft_opt) > 0:
-            action_list.extend(['c_%s' % craft_item for craft_item in craft_opt])
-
-        if self.num_items_in_inv < inventory_limit:
-            nearby_obj = self.get_obj_locations(agent_host)
-            if len(nearby_obj) > 1:
-                action_list.extend([item for item in nearby_obj.keys() if item != 'Odie'])
-
-        return action_list
-
-    def get_curr_state(self):
-        """Creates a unique identifier for a state.
-
-        The state is defined as the items in the agent inventory. Notice that the state has to be sorted -- otherwise
-        differnt order in the inventory will be different states.
-        """
-        return submission.get_curr_state(self.inventory.items())
+        '''
+		TODO: 
+			IF FIRST ACTION SET A BLOCK AS MARKING
+			IF SECOND ACTION TELEPORT TO A HOLE
+        '''
 
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
@@ -337,106 +263,29 @@ class Monty(object):
         return submission.choose_action(curr_state, possible_actions, eps, self.q_table)
 
     def act(self, agent_host, action):
-        print(action + ",", end = " ")
-        if action == 'present_gift':
-            return self.present_gift(agent_host)
-        elif action.startswith('c_'):
-            self.craft_item(agent_host, action[2:])
-        else:
-            self.fetch_item(agent_host, action)
-
-        return 0
+        '''
+		TODO: 
+			DO THE ACTUAL ACTION. EITHER MARKING OR TELEPORTING.
+			CALL "step" SOMEWHERE IN HERE
+        '''
 
     def update_q_table(self, tau, S, A, R, T):
-        """Performs relevant updates for state tau.
-
-        Args
-            tau: <int>  state index to update
-            S:   <dequqe>   states queue
-            A:   <dequqe>   actions queue
-            R:   <dequqe>   rewards queue
-            T:   <int>      terminating state index
-        """
-        curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
-        G = sum([self.gamma ** i * R[i] for i in range(len(S))])
-        if tau + self.n < T:
-            G += self.gamma ** self.n * self.q_table[S[-1]][A[-1]]
-
-        old_q = self.q_table[curr_s][curr_a]
-        self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
-
-    def best_policy(self, agent_host):
-        """Reconstructs the best action list according to the greedy policy. """
-        self.clear_inventory()
-        policy = []
-        current_r = 0
-        is_first_action = True
-        next_a = ""
-        while next_a != "present_gift":
-            curr_state = self.get_curr_state()
-            possible_actions = self.get_possible_actions(agent_host, is_first_action)
-            next_a = self.choose_action(curr_state, possible_actions, 0)
-            policy.append(next_a)
-            is_first_action = False
-            current_r = self.act(agent_host, next_a)
-        print(' with reward %.1f' % (current_r))
-        return self.is_solution(current_r)
-        #print 'Best policy so far is %s with reward %.1f' % (policy, current_r)
+        '''
+        TODO:
+        '''
+        pass
 
     def run(self, agent_host):
-        """Learns the process to choose the correct hole """
-        S, A, R = deque(), deque(), deque()
-        present_reward = 0
-        done_update = False
-        while not done_update:
-            s0 = self.get_curr_state()
-            possible_actions = self.get_possible_actions(agent_host, True)
-            a0 = self.choose_action(s0, possible_actions, self.epsilon)
-            S.append(s0)
-            A.append(a0)
-            R.append(0)
+        '''
+        TODO:
+        '''
+       	pass
 
-            for t in range(sys.maxsize):
-                time.sleep(0.1)
-                current_r = self.act(agent_host,A[-1])
-                R.append(current_r)
-                self.update_q_table()
-
-
-
-            T = sys.maxsize
-            for t in range(sys.maxsize):
-                time.sleep(0.1)
-                if t < T:
-                    current_r = self.act(agent_host, A[-1])
-                    R.append(current_r)
-
-                    if A[-1] == "present_gift":
-                        # Terminating state
-                        T = t + 1
-                        S.append('Term State')
-                        present_reward = current_r
-                        print("Reward:", present_reward)
-                    else:
-                        s = self.get_curr_state()
-                        S.append(s)
-                        possible_actions = self.get_possible_actions(agent_host)
-                        next_a = self.choose_action(s, possible_actions, self.epsilon)
-                        A.append(next_a)
-
-                tau = t - self.n + 1
-                if tau >= 0:
-                    self.update_q_table(tau, S, A, R, T)
-
-                if tau == T - 1:
-                    while len(S) > 1:
-                        tau = tau + 1
-                        self.update_q_table(tau, S, A, R, T)
-                    done_update = True
-                    break
 
 if __name__ == '__main__':
-
+	'''
+	GET IT TO WORK SOMEHOW
+	'''
     model = DQN(len(env.observation_space), len(env.action_space))
     epocs = 1000
     for epoc_num in range(epocs):
@@ -462,69 +311,5 @@ if __name__ == '__main__':
 
 
 
-    # -------- ASSIGNMENT 2 BELOW ---------
-
-
-    #sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)  # flush print output immediately
-    print('Starting...', flush=True)
-
-    expected_reward = 3390
-    my_client_pool = MalmoPython.ClientPool()
-    my_client_pool.add(MalmoPython.ClientInfo("127.0.0.1", 10000))
-
-    agent_host = MalmoPython.AgentHost()
-    try:
-        agent_host.parse(sys.argv)
-    except RuntimeError as e:
-        print('ERROR:', e)
-        print(agent_host.getUsage())
-        exit(1)
-    if agent_host.receivedArgument("help"):
-        print(agent_host.getUsage())
-        exit(0)
-
-    num_reps = 30000
-    n=1
-    odie = Odie(n=n)
-    print("n=",n)
-    odie.clear_inventory()
-    for iRepeat in range(num_reps):
-        my_mission = MalmoPython.MissionSpec(GetMissionXML("Fetch boy #" + str(iRepeat)), True)
-        my_mission_record = MalmoPython.MissionRecordSpec()  # Records nothing by default
-        my_mission.requestVideo(800, 500)
-        my_mission.setViewpoint(0)
-        max_retries = 3
-        for retry in range(max_retries):
-            try:
-                # Attempt to start the mission:
-                agent_host.startMission(my_mission, my_client_pool, my_mission_record, 0, "Odie")
-                break
-            except RuntimeError as e:
-                if retry == max_retries - 1:
-                    print("Error starting mission", e)
-                    print("Is the game running?")
-                    exit(1)
-                else:
-                    time.sleep(2)
-
-        world_state = agent_host.getWorldState()
-        while not world_state.has_mission_begun:
-            time.sleep(0.1)
-            world_state = agent_host.getWorldState()
-
-        # Every few iteration Odie will show us the best policy that he learned.
-        if (iRepeat + 1) % 5 == 0:
-            print((iRepeat+1), 'Showing best policy:', end = " ")
-            found_solution = odie.best_policy(agent_host)
-            if found_solution:
-                print('Found solution')
-                print('Done')
-                break
-        else:
-            print((iRepeat+1), 'Learning Q-Table:', end = " ")
-            # odie.run(agent_host)
-
-        odie.clear_inventory()
-        time.sleep(1)
 
 
