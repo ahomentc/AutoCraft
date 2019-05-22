@@ -165,7 +165,7 @@ class Monty(object):
         # ex:
         self.hidden_state      = lavaOrd     #would be better to take this as an argument
         self.action_space      = [0, 1, 2]   #which door
-        #self.observation_space = ['air', 'air', 'air'] Not needed???? Prob not
+        self.observation_space = ['air', 'air', 'air'] 
         self.state             = {}
         self.steps             = 0
 
@@ -247,10 +247,32 @@ class Monty(object):
 
     def get_possible_actions(self, agent_host, is_first_action=False):
         '''
+        Andrei
 		TODO: 
 			IF FIRST ACTION SET A BLOCK AS MARKING
 			IF SECOND ACTION TELEPORT TO A HOLE
         '''
+        action_list = []
+
+        # Action to place a block in front of a hole
+        # Change one of "observation_space" to diamond to mark selected
+        # returns what the state should be after this
+        if is_first_action:
+            action_list.append(
+                ['air','air','diamond'],
+                ['diamond','air','air'],
+                ['air','diamond','air'])
+        else:
+            # check to see which enviornment placed
+            # then selects a block to teleport to
+            if self.observation_space[0] == 'stone':
+                action_list.append([1,2])
+            elif self.observation_space[1] == 'stone':
+                action_list.append([0,2])
+            elif self.observation_space[2] == 'stone':
+                action_list.append([0,1])
+
+        return action_list
 
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
@@ -260,7 +282,15 @@ class Monty(object):
             if action not in self.q_table[curr_state]:
                 self.q_table[curr_state][action] = 0
 
-        return submission.choose_action(curr_state, possible_actions, eps, self.q_table)
+        a = random.uniform(0, 1)
+        if a <= eps:
+            a2 = random.randint(0, len(possible_actions) - 1)
+            return possible_actions[a2]
+        else:
+            maxTuple = max(q_table[curr_state].items(),key = lambda x:x[1])
+            maxList = [i[0] for i in q_table[curr_state].items() if i[1] == maxTuple[1]]
+            a2 = random.randint(0, len(maxList) - 1)
+            return maxList[a2]
 
     def act(self, agent_host, action):
         '''
@@ -279,7 +309,27 @@ class Monty(object):
         '''
         TODO:
         '''
-       	pass
+       	States, Actions, Rewards = deque(), deque(), deque()
+
+        # first choose an action
+        possible_actions = self.get_possible_actions(agent_host, True)
+        a0 = self.choose_action(s0, possible_actions, self.epsilon)
+        S.append(s0)
+        A.append(a0)
+        R.append(.3)
+
+        # now act and get the reward that the action gave us... should just be .3
+        current_r = self.act(agent_host, A[-1])
+        R.append(current_r)
+
+        # s = self.get_curr_state() # TODO: BUILD GET_CURR_STATE
+        S.append(s)
+        possible_actions = self.get_possible_actions(agent_host, False)
+        next_a = self.choose_action(s, possible_actions, self.epsilon)
+        A.append(next_a)
+
+        # update the q table somehow
+        self.update_q_table(tau, S, A, R, T)
 
 
 if __name__ == '__main__':
@@ -308,6 +358,17 @@ if __name__ == '__main__':
         while not world_state.has_mission_begun:
             time.sleep(0.1)
             world_state = agent_host.getWorldState()
+
+                # Every few iteration Odie will show us the best policy that he learned.
+        if (epoc_num + 1) % 5 == 0:
+            print((epoc_num+1), 'Showing best policy:', end = " ")
+            best_policy = odie.best_policy(agent_host)
+        else:
+            print((epoc_num+1), 'Learning Q-Table:', end = " ")
+            odie.run(agent_host)
+
+        odie.clear_inventory()
+        time.sleep(1)
 
 
 
