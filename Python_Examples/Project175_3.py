@@ -57,16 +57,6 @@ def getLavaDrawing(positions):
 def getDirtDrawing(position):
     return '<DrawBlock x="' + str(position[0]) + '" y="' + str(position[1]) + '" z="' + str(position[2]) + '" type="water" />'
 
-# returns an index from lavaOrd of the wrong choice to reveal
-def revealOneWrongChoice():
-	occurance = random.randint(0, 2)
-	# select either first occurance or second of lavaOrd
-	for i in range(3):
-		if occurance == 0 and lavaOrd[i] == 'lava':
-			return i
-		else:
-			occurance-=1
-
 
 def GetMissionXML(summary):
     ''' Build an XML mission string that uses the RewardForCollectingItem mission handler.'''
@@ -168,108 +158,100 @@ class Monty(object):
 
     def teleport(self, agent_host, teleport_x, teleport_z):
         """Directly teleport to a specific position."""
-        tp_command = "tp " + str(teleport_x)+ " 240 " + str(teleport_z)
+        print(teleport_x)
+        tp_command = "tp " + str(teleport_x+1) + " 240 3"
         agent_host.sendCommand(tp_command)
-        good_frame = False
-        start = timer()
-        while not good_frame:
-            world_state = agent_host.getWorldState()
-            if not world_state.is_mission_running:
-                print("Mission ended prematurely - error.")
-                exit(1)
-            if not good_frame and world_state.number_of_video_frames_since_last_state > 0:
-                frame_x = world_state.video_frames[-1].xPos
-                frame_z = world_state.video_frames[-1].zPos
-                if math.fabs(frame_x - teleport_x) < 0.001 and math.fabs(frame_z - teleport_z) < 0.001:
-                    good_frame = True
-                    end_frame = timer()
 
-    def step(self, action):
-        """ Checks for 1st choice and returns a door that is not the car door. """
+    # def step(self, action):
+    #     """ Checks for 1st choice and returns a door that is not the car door. """
 
+    #     '''
+    #     TODO: MAYBE MAKE THE REWARD DEPEND ON THE ACTUAL EVENT THAT HAPPENS IN THE GAME.
+    #     LIKE YOU YOU FALL IN LAVA AND DIE. DYING GIVES A NEGATIVE REWARD.
+    #     MAYBE DO THIS LATER THOUGH
+
+    #     '''
+
+    #     if action not in self.action_space:
+    #         print("Error: action", action, "is illegal.")
+    #     reward = 0
+    #     if self.steps == 0:        ## 1st choice of Monty
+    #         reward += 0.33
+    #         self.state[action] = 1 ##chosen: state=1, not chosen: state=0, opened(by host): state=2
+    #         if action == 0:
+    #             if self.hidden_state[1] == 'water':  ## dirt
+    #                 self.state[2] = 2
+    #                 self.hidden_state[2] = 'opened'
+    #             elif self.hidden_state[2] == 'water':
+    #                 self.state[1] = 2
+    #                 self.hidden_state[1] = 'opened'
+    #         elif action == 1:
+    #             if self.hidden_state[0] == 'water':
+    #                 self.state[2] = 2
+    #                 self.hidden_state[2] = 'opened'
+    #             elif self.hidden_state[2] == 'water':
+    #                 self.state[0] = 2
+    #                 self.hidden_state[0] = 'opened'
+    #         elif action == 2:
+    #             if self.hidden_state[0] == 'water':
+    #                 self.state[1] = 2
+    #                 self.hidden_state[1] = 'opened'
+    #             elif self.hidden_state[1] == 'water':
+    #                 self.state[0] = 2
+    #                 self.hidden_state[0] = 'opened'
+    #     elif self.steps == 1:     ##Monty chooses a second time and computes reward
+    #         for k in self.state.keys():
+    #             if self.state[k] == 1:
+    #                 self.state[k] = 0
+    #         self.state[action] = 1
+    #         total = 0
+    #         for i in range(3):
+    #             if self.hidden_state[i] == 'water':
+    #                 total += self.state[i] - 1
+    #             elif self.hidden_state[i] == 'opened':
+    #                 total += self.state[i] - 2
+    #             elif self.hidden_state[i] == 'lava':
+    #                 total += self.state[i] - 0
+    #         if total == 0:
+    #             reward += 1.0
+    #     self.steps+=1
+    #     if self.steps == 2:  ## return state, reward, completion, {}
+    #         return self.state, reward, True, {}
+    #     return self.state,reward, False, {}
+
+        # returns an index from lavaOrd of the wrong choice to reveal
+    def revealOneWrongChoice(self):
+        index = random.randint(0, 1)
+        selections = []
+        for i in range(3):
+            if lavaOrd[i] == 'lava':
+                selections.append(i)
+        self.observation_space[selections[index]] = 'stone'
+        # update the observation state to show a block
+        # also place a stone --- TODO ---
+        return selections[index]
+
+
+    def get_possible_actions(self, agent_host):
         '''
-        TODO: MAYBE MAKE THE REWARD DEPEND ON THE ACTUAL EVENT THAT HAPPENS IN THE GAME.
-        LIKE YOU YOU FALL IN LAVA AND DIE. DYING GIVES A NEGATIVE REWARD.
-        MAYBE DO THIS LATER THOUGH
-
-        '''
-
-        if action not in self.action_space:
-            print("Error: action", action, "is illegal.")
-        reward = 0
-        if self.steps == 0:        ## 1st choice of Monty
-            reward += 0.33
-            self.state[action] = 1 ##chosen: state=1, not chosen: state=0, opened(by host): state=2
-            if action == 0:
-                if self.hidden_state[1] == 'water':  ## dirt
-                    self.state[2] = 2
-                    self.hidden_state[2] = 'opened'
-                elif self.hidden_state[2] == 'water':
-                    self.state[1] = 2
-                    self.hidden_state[1] = 'opened'
-            elif action == 1:
-                if self.hidden_state[0] == 'water':
-                    self.state[2] = 2
-                    self.hidden_state[2] = 'opened'
-                elif self.hidden_state[2] == 'water':
-                    self.state[0] = 2
-                    self.hidden_state[0] = 'opened'
-            elif action == 2:
-                if self.hidden_state[0] == 'water':
-                    self.state[1] = 2
-                    self.hidden_state[1] = 'opened'
-                elif self.hidden_state[1] == 'water':
-                    self.state[0] = 2
-                    self.hidden_state[0] = 'opened'
-        elif self.steps == 1:     ##Monty chooses a second time and computes reward
-            for k in self.state.keys():
-                if self.state[k] == 1:
-                    self.state[k] = 0
-            self.state[action] = 1
-            total = 0
-            for i in range(3):
-                if self.hidden_state[i] == 'water':
-                    total += self.state[i] - 1
-                elif self.hidden_state[i] == 'opened':
-                    total += self.state[i] - 2
-                elif self.hidden_state[i] == 'lava':
-                    total += self.state[i] - 0
-            if total == 0:
-                reward += 1.0
-        self.steps+=1
-        if self.steps == 2:  ## return state, reward, completion, {}
-            return self.state, reward, True, {}
-        return self.state,reward, False, {}
-
-
-    def get_possible_actions(self, agent_host, is_first_action=False):
-        '''
-        Andrei
 		TODO: 
 			IF FIRST ACTION SET A BLOCK AS MARKING
 			IF SECOND ACTION TELEPORT TO A HOLE
         '''
         action_list = []
+        # check to see which enviornment placed
+        # then selects a block to teleport to
+        print(self.observation_space)
+        if self.observation_space[0] == 'stone':
+            action_list = tuple([1,2])
+        elif self.observation_space[1] == 'stone':
+            action_list = tuple([0,2])
+        elif self.observation_space[2] == 'stone':
+            action_list = tuple([0,1])
 
-        # Action to place a block in front of a hole
-        # Change one of "observation_space" to diamond to mark selected
-        # returns what the state should be after this
-        if is_first_action:
-            action_list.append(tuple(['air','air','diamond']))
-            action_list.append(tuple(['diamond','air','air']))
-            action_list.append(tuple(['air','diamond','air']))
-        else:
-            # check to see which enviornment placed
-            # then selects a block to teleport to
-            if self.observation_space[0] == 'stone':
-                action_list.append([1,2])
-            elif self.observation_space[1] == 'stone':
-                action_list.append([0,2])
-            elif self.observation_space[2] == 'stone':
-                action_list.append([0,1])
+        return action_list
 
-        return tuple(action_list)
-
+    # only does the second action. Not for the first action. That one is always random anyways
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
         if curr_state not in self.q_table:
@@ -289,12 +271,7 @@ class Monty(object):
             return maxList[a2]
 
     def convert_code_to_world_action(self, action):
-        # place block (first action)
-        if type(action[0]) == str:
-            pass
-        # teleport (second action)
-        else:
-            return 2 * (action-1)
+        return 2 * (action-1)
 
     # action will be an array, first entree identifies action type
     def act(self, agent_host, is_first_action, action):
@@ -306,6 +283,7 @@ class Monty(object):
         # first action, choose to place a block
         if is_first_action:
             # need to do this part so that "get_possible_actions works"
+            locRepr = action.index('diamond')
             pass
         # second action, teleport
         else:
@@ -322,30 +300,25 @@ class Monty(object):
     def get_curr_state(self):
         return tuple(self.observation_space)
 
+    def chooseRandomFirstAction(self):
+        index = random.randint(0, 2)
+        self.observation_space[index] = 'diamond'
+        # -- TODO -- also place the actual diamond
+
     def run(self, agent_host):
         '''
         TODO:
         '''
        	S, A, R = deque(), deque(), deque()
 
-        # first choose an action
-        possible_actions = self.get_possible_actions(agent_host, True)
-        s0 = self.get_curr_state()
-        a0 = self.choose_action(s0, possible_actions, self.epsilon)
-        S.append(s0)
-        A.append(a0)
-        R.append(.3)
+        self.chooseRandomFirstAction()
 
-        # now act and get the reward that the action gave us... should just be .3
-        current_r = self.act(agent_host, True, A[-1])
-        R.append(current_r)
+        # now place a stone to mark where lava is (opening door)
+        indexOfReveal = self.revealOneWrongChoice()    
 
         s = self.get_curr_state()
         S.append(s)
-        possible_actions = self.get_possible_actions(agent_host, False)
-        print("\n---")
-        print("possible_actions ", possible_actions)
-        print("---")
+        possible_actions = self.get_possible_actions(agent_host)
         next_a = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
 
