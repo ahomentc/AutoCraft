@@ -15,9 +15,6 @@ from collections import defaultdict, deque
 from timeit import default_timer as timer
 from secrets import randbelow
 
-import torch
-import torch.nn as nn
-
 items=['dirt', 'diamond']
 
 lavaOrd=['lava','lava','lava'] # hidden state
@@ -122,7 +119,7 @@ def GetMissionXML(summary):
         </ServerSection>
 
         <AgentSection mode="Survival">
-            <Name>Odie</Name>
+            <Name>Monty</Name>
             <AgentStart>
                 <Placement x="0" y="241.0" z="0"/>
                 <Inventory>
@@ -165,13 +162,13 @@ class Monty(object):
         # ex:
         self.hidden_state      = lavaOrd     #would be better to take this as an argument
         self.action_space      = [0, 1, 2]   #which door
-        self.observation_space = ['air', 'air', 'air'] 
-        self.state             = {}
+        self.observation_space = ['air', 'air', 'air']  # I think this is ame as our state
+        # self.state             = {}
         self.steps             = 0
 
     def teleport(self, agent_host, teleport_x, teleport_z):
         """Directly teleport to a specific position."""
-        tp_command = "tp " + str(teleport_x)+ " 226 " + str(teleport_z)
+        tp_command = "tp " + str(teleport_x)+ " 240 " + str(teleport_z)
         agent_host.sendCommand(tp_command)
         good_frame = False
         start = timer()
@@ -258,10 +255,9 @@ class Monty(object):
         # Change one of "observation_space" to diamond to mark selected
         # returns what the state should be after this
         if is_first_action:
-            action_list.append(
-                ['air','air','diamond'],
-                ['diamond','air','air'],
-                ['air','diamond','air'])
+            action_list.append(tuple(['air','air','diamond']))
+            action_list.append(tuple(['diamond','air','air']))
+            action_list.append(tuple(['air','diamond','air']))
         else:
             # check to see which enviornment placed
             # then selects a block to teleport to
@@ -272,7 +268,7 @@ class Monty(object):
             elif self.observation_space[2] == 'stone':
                 action_list.append([0,1])
 
-        return action_list
+        return tuple(action_list)
 
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
@@ -287,17 +283,35 @@ class Monty(object):
             a2 = random.randint(0, len(possible_actions) - 1)
             return possible_actions[a2]
         else:
-            maxTuple = max(q_table[curr_state].items(),key = lambda x:x[1])
-            maxList = [i[0] for i in q_table[curr_state].items() if i[1] == maxTuple[1]]
+            maxTuple = max(self.q_table[curr_state].items(),key = lambda x:x[1])
+            maxList = [i[0] for i in self.q_table[curr_state].items() if i[1] == maxTuple[1]]
             a2 = random.randint(0, len(maxList) - 1)
             return maxList[a2]
 
-    def act(self, agent_host, action):
+    def convert_code_to_world_action(self, action):
+        # place block (first action)
+        if type(action[0]) == str:
+            pass
+        # teleport (second action)
+        else:
+            return 2 * (action-1)
+
+    # action will be an array, first entree identifies action type
+    def act(self, agent_host, is_first_action, action):
         '''
 		TODO: 
 			DO THE ACTUAL ACTION. EITHER MARKING OR TELEPORTING.
 			CALL "step" SOMEWHERE IN HERE
         '''
+        # first action, choose to place a block
+        if is_first_action:
+            # need to do this part so that "get_possible_actions works"
+            pass
+        # second action, teleport
+        else:
+            xcoord = self.convert_code_to_world_action(action)
+            self.teleport(agent_host, xcoord, 2)
+
 
     def update_q_table(self, tau, S, A, R, T):
         '''
@@ -305,48 +319,73 @@ class Monty(object):
         '''
         pass
 
+    def get_curr_state(self):
+        return tuple(self.observation_space)
+
     def run(self, agent_host):
         '''
         TODO:
         '''
-       	States, Actions, Rewards = deque(), deque(), deque()
+       	S, A, R = deque(), deque(), deque()
 
         # first choose an action
         possible_actions = self.get_possible_actions(agent_host, True)
+        s0 = self.get_curr_state()
         a0 = self.choose_action(s0, possible_actions, self.epsilon)
         S.append(s0)
         A.append(a0)
         R.append(.3)
 
         # now act and get the reward that the action gave us... should just be .3
-        current_r = self.act(agent_host, A[-1])
+        current_r = self.act(agent_host, True, A[-1])
         R.append(current_r)
 
-        # s = self.get_curr_state() # TODO: BUILD GET_CURR_STATE
+        s = self.get_curr_state()
         S.append(s)
         possible_actions = self.get_possible_actions(agent_host, False)
+        print("\n---")
+        print("possible_actions ", possible_actions)
+        print("---")
         next_a = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
+
+        current_r = self.act(agent_host, False, A[-1]) # should there be another update q above this?
+        R.append(current_r)
 
         # update the q table somehow
         self.update_q_table(tau, S, A, R, T)
 
 
 if __name__ == '__main__':
-	'''
-	GET IT TO WORK SOMEHOW
-	'''
-    model = DQN(len(env.observation_space), len(env.action_space))
+
+    print('Starting...', flush=True)
+
+    expected_reward = 3390
+    my_client_pool = MalmoPython.ClientPool()
+    my_client_pool.add(MalmoPython.ClientInfo("127.0.0.1", 10000))
+
+    agent_host = MalmoPython.AgentHost()
+    try:
+        agent_host.parse(sys.argv)
+    except RuntimeError as e:
+        print('ERROR:', e)
+        print(agent_host.getUsage())
+        exit(1)
+    if agent_host.receivedArgument("help"):
+        print(agent_host.getUsage())
+        exit(0)
+
     epocs = 1000
-    for epoc_num in range(epocs):
-        # epsilon = epsilon_by_frame(frame_idx)
-        # action = model.act(state, epsilon)
-        # next_state, reward, done, _ = env.step(int(action))
+    monty = Monty()
+    for epoc_num in range(1000):
         my_mission = MalmoPython.MissionSpec(GetMissionXML("Monty #" + str(epoc_num)), True)
+        my_mission_record = MalmoPython.MissionRecordSpec()  # Records nothing by default
+        my_mission.requestVideo(800, 500)
+        my_mission.setViewpoint(0)
         try:
             # Attempt to start the mission:
-            agent_host.startMission(my_mission, my_client_pool, my_mission_record, 0, "Odie")
-            break
+            agent_host.startMission(my_mission, my_client_pool, my_mission_record, 0, "monty")
+            # break
         except RuntimeError as e:
             if retry == max_retries - 1:
                 print("Error starting mission", e)
@@ -359,15 +398,15 @@ if __name__ == '__main__':
             time.sleep(0.1)
             world_state = agent_host.getWorldState()
 
-                # Every few iteration Odie will show us the best policy that he learned.
+                # Every few iteration Monty will show us the best policy that he learned.
         if (epoc_num + 1) % 5 == 0:
             print((epoc_num+1), 'Showing best policy:', end = " ")
-            best_policy = odie.best_policy(agent_host)
+            best_policy = monty.best_policy(agent_host)
         else:
             print((epoc_num+1), 'Learning Q-Table:', end = " ")
-            odie.run(agent_host)
+            monty.run(agent_host=agent_host)
 
-        odie.clear_inventory()
+        monty.clear_inventory()
         time.sleep(1)
 
 
