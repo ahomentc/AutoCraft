@@ -158,8 +158,7 @@ class Monty(object):
 
     def teleport(self, agent_host, teleport_x, teleport_z):
         """Directly teleport to a specific position."""
-        print(teleport_x)
-        tp_command = "tp " + str(teleport_x+1) + " 240 3"
+        tp_command = "tp " + str(teleport_x) + " 225 2"
         agent_host.sendCommand(tp_command)
 
     # def step(self, action):
@@ -311,21 +310,25 @@ class Monty(object):
         '''
        	S, A, R = deque(), deque(), deque()
 
+        # choose a random action (select first door)
+        # we don't need to train for this as its always random
         self.chooseRandomFirstAction()
 
-        # now place a stone to mark where lava is (opening door)
+        # now place a stone to mark where lava is (presentor opening door)
         indexOfReveal = self.revealOneWrongChoice()    
 
+        # we're using observation_space as the state
         s = self.get_curr_state()
         S.append(s)
         possible_actions = self.get_possible_actions(agent_host)
         next_a = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
 
+        # act and get reward from the action
         current_r = self.act(agent_host, False, A[-1]) # should there be another update q above this?
         R.append(current_r)
 
-        # update the q table somehow
+        # update the q table somehow TODO
         self.update_q_table(tau, S, A, R, T)
 
 
