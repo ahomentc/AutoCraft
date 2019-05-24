@@ -130,6 +130,10 @@ def GetMissionXML(summary):
                 <AgentQuitFromCollectingItem>
                     <Item type="rabbit_stew" description="Supper's Up!!"/>
                 </AgentQuitFromCollectingItem>
+                <RewardForTouchingBlockType>
+                    <Block reward="-100.0" type="lava" behaviour="onceOnly"/>
+                    <Block reward="100.0" type="water" behaviour="onceOnly"/>
+                </RewardForTouchingBlockType>
             </AgentHandlers>
         </AgentSection>
 
@@ -280,6 +284,7 @@ class Monty(object):
 			CALL "step" SOMEWHERE IN HERE
         '''
         # first action, choose to place a block
+        reward = 0
         if is_first_action:
             # need to do this part so that "get_possible_actions works"
             locRepr = action.index('diamond')
@@ -288,13 +293,27 @@ class Monty(object):
         else:
             xcoord = self.convert_code_to_world_action(action)
             self.teleport(agent_host, xcoord, 2)
+            if world_state.number_of_rewards_since_last_state > 0:
+                reward+= world_state.rewards[0].getValue()
+        return reward
 
 
     def update_q_table(self, tau, S, A, R, T):
         '''
         TODO:
         '''
-        pass
+        curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
+        print("gamma:", self.gamma)
+        print("R:", R)
+        print("S:", S)
+        print("A:", A)
+
+        G = sum([self.gamma ** i * R[i] for i in range(len(S))])        
+        if tau + self.n < T:
+            G += self.gamma ** self.n * self.q_table[S[-1]][A[-1]]
+        old_q = self.q_table[curr_s][curr_a]
+        self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
+        print("end q_table:", self.q_table)
 
     def get_curr_state(self):
         return tuple(self.observation_space)
@@ -316,20 +335,43 @@ class Monty(object):
 
         # now place a stone to mark where lava is (presentor opening door)
         indexOfReveal = self.revealOneWrongChoice()    
-
+        print("\nobservation space: ", self.observation_space)
+        
         # we're using observation_space as the state
         s = self.get_curr_state()
         S.append(s)
         possible_actions = self.get_possible_actions(agent_host)
         next_a = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
-
+        
         # act and get reward from the action
+        
         current_r = self.act(agent_host, False, A[-1]) # should there be another update q above this?
         R.append(current_r)
 
+
+        
         # update the q table somehow TODO
-        self.update_q_table(tau, S, A, R, T)
+
+        
+        t = 2 #arbitrary number. just trying to get tau and update_q_table to work
+        T = sys.maxsize #No relevance rn. just trying to get tau and update_q_table to work.
+        tau = t - self.n + 1
+
+        if t < T:
+            current_r = self.act(agent_host, False, A[-1])
+            R.append(current_r)
+            
+            s = self.get_curr_state()
+            S.append(s)
+            possible_actions = self.get_possible_actions(agent_host)
+            next_a = self.choose_action(s, possible_actions, self.epsilon)
+            A.append(next_a)
+        
+        if tau >= 0:
+            self.update_q_table(tau, S, A, R, T)
+        else:
+            self.update_q_table(tau, S, A, R, T)
 
 
 if __name__ == '__main__':
@@ -350,7 +392,7 @@ if __name__ == '__main__':
     if agent_host.receivedArgument("help"):
         print(agent_host.getUsage())
         exit(0)
-
+    retry = 0
     epocs = 1000
     monty = Monty()
     for epoc_num in range(1000):
@@ -358,12 +400,14 @@ if __name__ == '__main__':
         my_mission_record = MalmoPython.MissionRecordSpec()  # Records nothing by default
         my_mission.requestVideo(800, 500)
         my_mission.setViewpoint(0)
+        
         try:
             # Attempt to start the mission:
+            retry+=1
             agent_host.startMission(my_mission, my_client_pool, my_mission_record, 0, "monty")
             # break
         except RuntimeError as e:
-            if retry == max_retries - 1:
+            if retry == epocs - 1:
                 print("Error starting mission", e)
                 print("Is the game running?")
                 exit(1)
@@ -381,10 +425,8 @@ if __name__ == '__main__':
         else:
             print((epoc_num+1), 'Learning Q-Table:', end = " ")
             monty.run(agent_host=agent_host)
-
-        monty.clear_inventory()
+        lavaOrd=['lava','lava','lava']
         time.sleep(1)
-
 
 
 
