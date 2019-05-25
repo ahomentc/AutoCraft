@@ -8,6 +8,7 @@ import sys
 import time
 import json
 import random
+import statistics 
 import math
 import errno
 import Project175_helper as submission
@@ -18,6 +19,11 @@ from secrets import randbelow
 items=['dirt', 'diamond']
 
 lavaOrd=['lava','lava','lava'] # hidden state
+
+# array holds result of every iteration
+# 1 for switch, 0 for not switching
+switched_arr = []
+live_arr = [] # 1 for live, 0 for die
 
 # randomly set lava to two locations and dirt to one
 def setCorrectLoc():
@@ -148,7 +154,7 @@ class Monty(object):
             gamma:  <float>  value decay rate   (default = 1)
             n:      <int>    number of back steps to update (default = 1)
         """
-        self.epsilon = 0.2  # chance of taking a random action instead of the best
+        self.epsilon = 0.1  # chance of taking a random action instead of the best
         self.q_table = {}
         self.n, self.alpha, self.gamma = n, alpha, gamma
 
@@ -165,64 +171,7 @@ class Monty(object):
         tp_command = "tp " + str(teleport_x) + " 225 2"
         agent_host.sendCommand(tp_command)
 
-    # def step(self, action):
-    #     """ Checks for 1st choice and returns a door that is not the car door. """
-
-    #     '''
-    #     TODO: MAYBE MAKE THE REWARD DEPEND ON THE ACTUAL EVENT THAT HAPPENS IN THE GAME.
-    #     LIKE YOU YOU FALL IN LAVA AND DIE. DYING GIVES A NEGATIVE REWARD.
-    #     MAYBE DO THIS LATER THOUGH
-
-    #     '''
-
-    #     if action not in self.action_space:
-    #         print("Error: action", action, "is illegal.")
-    #     reward = 0
-    #     if self.steps == 0:        ## 1st choice of Monty
-    #         reward += 0.33
-    #         self.state[action] = 1 ##chosen: state=1, not chosen: state=0, opened(by host): state=2
-    #         if action == 0:
-    #             if self.hidden_state[1] == 'water':  ## dirt
-    #                 self.state[2] = 2
-    #                 self.hidden_state[2] = 'opened'
-    #             elif self.hidden_state[2] == 'water':
-    #                 self.state[1] = 2
-    #                 self.hidden_state[1] = 'opened'
-    #         elif action == 1:
-    #             if self.hidden_state[0] == 'water':
-    #                 self.state[2] = 2
-    #                 self.hidden_state[2] = 'opened'
-    #             elif self.hidden_state[2] == 'water':
-    #                 self.state[0] = 2
-    #                 self.hidden_state[0] = 'opened'
-    #         elif action == 2:
-    #             if self.hidden_state[0] == 'water':
-    #                 self.state[1] = 2
-    #                 self.hidden_state[1] = 'opened'
-    #             elif self.hidden_state[1] == 'water':
-    #                 self.state[0] = 2
-    #                 self.hidden_state[0] = 'opened'
-    #     elif self.steps == 1:     ##Monty chooses a second time and computes reward
-    #         for k in self.state.keys():
-    #             if self.state[k] == 1:
-    #                 self.state[k] = 0
-    #         self.state[action] = 1
-    #         total = 0
-    #         for i in range(3):
-    #             if self.hidden_state[i] == 'water':
-    #                 total += self.state[i] - 1
-    #             elif self.hidden_state[i] == 'opened':
-    #                 total += self.state[i] - 2
-    #             elif self.hidden_state[i] == 'lava':
-    #                 total += self.state[i] - 0
-    #         if total == 0:
-    #             reward += 1.0
-    #     self.steps+=1
-    #     if self.steps == 2:  ## return state, reward, completion, {}
-    #         return self.state, reward, True, {}
-    #     return self.state,reward, False, {}
-
-        # returns an index from lavaOrd of the wrong choice to reveal
+    # returns an index from lavaOrd of the wrong choice to reveal
     def revealOneWrongChoice(self):
         index = random.randint(0, 1)
         selections = []
@@ -283,18 +232,11 @@ class Monty(object):
 			DO THE ACTUAL ACTION. EITHER MARKING OR TELEPORTING.
 			CALL "step" SOMEWHERE IN HERE
         '''
-        # first action, choose to place a block
         reward = 0
-        if is_first_action:
-            # need to do this part so that "get_possible_actions works"
-            locRepr = action.index('diamond')
-            pass
-        # second action, teleport
-        else:
-            xcoord = self.convert_code_to_world_action(action)
-            self.teleport(agent_host, xcoord, 2)
-            if world_state.number_of_rewards_since_last_state > 0:
-                reward+= world_state.rewards[0].getValue()
+        xcoord = self.convert_code_to_world_action(action)
+        self.teleport(agent_host, xcoord, 2)
+        if world_state.number_of_rewards_since_last_state > 0:
+            reward+= world_state.rewards[0].getValue()
         return reward
 
 
@@ -302,18 +244,35 @@ class Monty(object):
         '''
         TODO:
         '''
-        curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
+        # curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
         print("gamma:", self.gamma)
         print("R:", R)
         print("S:", S)
         print("A:", A)
 
-        G = sum([self.gamma ** i * R[i] for i in range(len(S))])        
+        G = sum([self.gamma ** R])        
         if tau + self.n < T:
-            G += self.gamma ** self.n * self.q_table[S[-1]][A[-1]]
-        old_q = self.q_table[curr_s][curr_a]
-        self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
+            G += self.gamma ** self.n * self.q_table[S][A]
+        old_q = self.q_table[S][A]
+        self.q_table[S][A] = old_q + self.alpha * (G - old_q)
         print("end q_table:", self.q_table)
+
+    # def update_q_table(self, tau, S, A, R, T):
+    #     """Performs relevant updates for state tau.
+    #     Args
+    #         tau: <int>  state index to update
+    #         S:   <dequqe>   states queue
+    #         A:   <dequqe>   actions queue
+    #         R:   <dequqe>   rewards queue
+    #         T:   <int>      terminating state index
+    #     """
+    #     curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
+    #     G = sum([self.gamma ** i * R[i] for i in range(len(S))])
+    #     if tau + self.n < T:
+    #         G += self.gamma ** self.n * self.q_table[S[-1]][A[-1]]
+
+    #     old_q = self.q_table[curr_s][curr_a]
+    #     self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
 
     def get_curr_state(self):
         return tuple(self.observation_space)
@@ -321,6 +280,7 @@ class Monty(object):
     def chooseRandomFirstAction(self):
         index = random.randint(0, 2)
         self.observation_space[index] = 'diamond'
+        return index
         # -- TODO -- also place the actual diamond
 
     def run(self, agent_host):
@@ -331,7 +291,7 @@ class Monty(object):
 
         # choose a random action (select first door)
         # we don't need to train for this as its always random
-        self.chooseRandomFirstAction()
+        first_action = self.chooseRandomFirstAction()
 
         # now place a stone to mark where lava is (presentor opening door)
         indexOfReveal = self.revealOneWrongChoice()    
@@ -341,6 +301,8 @@ class Monty(object):
         s = self.get_curr_state()
         S.append(s)
         possible_actions = self.get_possible_actions(agent_host)
+
+        # returns index to teleport to
         next_a = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
         
@@ -349,29 +311,51 @@ class Monty(object):
         current_r = self.act(agent_host, False, A[-1]) # should there be another update q above this?
         R.append(current_r)
 
-
+        # check to see if switched
+        print("\n-------\n")
+        print("Iteration ", len(switched_arr))
+        if next_a != first_action:
+            switched_arr.append(1)
+            print("SWITCHED")
+        else:
+            switched_arr.append(0)
+            print("DIDN'T SWITCH")
+        print("Percent switched: ", statistics.mean(switched_arr))
+        if lavaOrd[next_a] == 'lava':
+            live_arr.append(0)
+        else:
+            live_arr.append(1)
+        print("Percent survived: ", statistics.mean(live_arr))
+        print("\n-------\n")
         
-        # update the q table somehow TODO
-
-        
-        t = 2 #arbitrary number. just trying to get tau and update_q_table to work
+        # t = 2 #arbitrary number. just trying to get tau and update_q_table to work
+        t = len(switched_arr)
         T = sys.maxsize #No relevance rn. just trying to get tau and update_q_table to work.
         tau = t - self.n + 1
 
-        if t < T:
-            current_r = self.act(agent_host, False, A[-1])
-            R.append(current_r)
+        # self.update_q_table(tau, s, next_a, current_r, T)
+        self.update_q_table(tau, s, next_a, current_r, T)
+
+        self.observation_space = ['air', 'air', 'air']
+
+        # t = 2 #arbitrary number. just trying to get tau and update_q_table to work
+        # T = sys.maxsize #No relevance rn. just trying to get tau and update_q_table to work.
+        # tau = t - self.n + 1
+
+        # if t < T:
+        #     current_r = self.act(agent_host, False, A[-1])
+        #     R.append(current_r)
             
-            s = self.get_curr_state()
-            S.append(s)
-            possible_actions = self.get_possible_actions(agent_host)
-            next_a = self.choose_action(s, possible_actions, self.epsilon)
-            A.append(next_a)
+        #     s = self.get_curr_state()
+        #     S.append(s)
+        #     possible_actions = self.get_possible_actions(agent_host)
+        #     next_a = self.choose_action(s, possible_actions, self.epsilon)
+        #     A.append(next_a)
         
-        if tau >= 0:
-            self.update_q_table(tau, S, A, R, T)
-        else:
-            self.update_q_table(tau, S, A, R, T)
+        # if tau >= 0:
+        #     self.update_q_table(tau, S, A, R, T)
+        # else:
+        #     self.update_q_table(tau, S, A, R, T)
 
 
 if __name__ == '__main__':
@@ -421,7 +405,7 @@ if __name__ == '__main__':
                 # Every few iteration Monty will show us the best policy that he learned.
         if (epoc_num + 1) % 5 == 0:
             print((epoc_num+1), 'Showing best policy:', end = " ")
-            best_policy = monty.best_policy(agent_host)
+            # best_policy = monty.best_policy(agent_host)
         else:
             print((epoc_num+1), 'Learning Q-Table:', end = " ")
             monty.run(agent_host=agent_host)
