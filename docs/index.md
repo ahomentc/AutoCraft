@@ -3,7 +3,7 @@ layout: default
 title:  Home
 ---
 
-Source code: https://github.com/ahomentc/AutoCraft (_fix this_)
+Source code: https://github.com/ahomentc/AutoCraft
 
 Reports:
 
