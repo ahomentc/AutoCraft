@@ -3,7 +3,7 @@ layout: default
 title:  Home
 ---
 
-Source code: https://github.com/USER/PROJECT (_fix this_)
+Source code: https://github.com/ahomentc/AutoCraft (_fix this_)
 
 Reports:
 
@@ -11,30 +11,15 @@ Reports:
 - [Status](status.html)
 - [Final](final.html)
 
-What's Markdown (`.md`)?
+## The Monthy Hall Problem
 
-Markdown is markup that lets you write hypertext (HTML) documents
-in easy-to-read and easy-to-write plain text.
-No angle brackets `<></>` required for
-paragraphs, lists, blockquotes, tables, etc.
+The Monty Hall Problem is described as this: "Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice?"
 
+Under the standard assumptions, contestants who switch have a 2/3 chance of winning the car, while contestants who stick to their initial choice have only a 1/3 chance.
 
-This is a paragraph (in Markdown). Some more
-text here.
+A key insight is that switching doors is a different action than choosing between the two remaining doors at random, as the first action uses the previous information and the latter does not. Other possible behaviors than the one described can reveal different additional information, or none at all, and yield different probabilities.
 
-This is another paragraph.
+Video describing the problem: https://www.youtube.com/watch?v=4Lb-6rxZxx0
 
-This is a list:
+# We are training an agent to choose to switch as much as possible
 
-- Orange
-- Apple
-- Blueberry
-
-$$x^2 = y^2$$
-
-
-Just getting started with Markdown?
-See the [HTML <-> Markdown Quick Reference (Cheat Sheet)][quickref].
-
-
-[quickref]: https://github.com/mundimark/quickrefs/blob/master/HTML.md
