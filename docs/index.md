@@ -2,9 +2,9 @@
 layout: default
 title:  Home
 ---
-<img src="http://www.sciencemadesimple.co.uk/files/2016/04/The-choices.png" alt="drawing" width="100%"/><br/>
-
 ## The Monthy Hall Problem
+<img src="http://www.sciencemadesimple.co.uk/files/2016/04/The-choices.png" alt="drawing" width="100%"/><br/>
+<br/>
 Source code: [https://github.com/ahomentc/AutoCraft](https://github.com/ahomentc/AutoCraft)
 
 Reports:
