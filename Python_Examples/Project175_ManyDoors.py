@@ -16,9 +16,11 @@ from collections import defaultdict, deque
 from timeit import default_timer as timer
 from secrets import randbelow
 
-num_doors = 3
-staticEnv = True
-staticFirstAction = True
+num_doors = 5
+staticEnv = False
+staticFirstAction = False
+
+fakeCorrect = False
 
 items=['dirt', 'diamond']
 
@@ -33,7 +35,6 @@ live_arr = [] # 1 for live, 0 for die
 # randomly set lava to two locations and dirt to one
 def setCorrectLoc():
     correctLoc = randbelow(num_doors)
-    print(correctLoc)
     if staticEnv:
         lavaOrd[1] = 'dirt'
     else:
@@ -157,8 +158,8 @@ def GetMissionXML(summary):
                     <Item type="rabbit_stew" description="Supper's Up!!"/>
                 </AgentQuitFromCollectingItem>
                 <RewardForTouchingBlockType>
-                    <Block reward="-100.0" type="lava" behaviour="onceOnly"/>
-                    <Block reward="100.0" type="water" behaviour="onceOnly"/>
+                    <Block reward="-9.0" type="lava" />
+                    <Block reward="10.0" type="water" />
                 </RewardForTouchingBlockType>
             </AgentHandlers>
         </AgentSection>
@@ -174,7 +175,7 @@ class Monty(object):
             gamma:  <float>  value decay rate   (default = 1)
             n:      <int>    number of back steps to update (default = 1)
         """
-        self.epsilon = 0.35  # chance of taking a random action instead of the best
+        self.epsilon = 0.05  # chance of taking a random action instead of the best
         self.q_table = {}
         self.n, self.alpha, self.gamma = n, alpha, gamma
         self.alpha = .1
@@ -242,6 +243,9 @@ class Monty(object):
             if action not in self.q_table[curr_state]:
                 self.q_table[curr_state][action] = 0
 
+        if fakeCorrect:
+            return lavaOrd.index('dirt'),False
+
         a = random.uniform(0, 1)
         if a <= eps:
             a2 = random.randint(0, len(possible_actions) - 1)
@@ -269,7 +273,7 @@ class Monty(object):
         '''
         reward = 0
         xcoord = self.convert_code_to_world_action(action)
-        print("action is ",action)
+        # print("action is ",action)
         self.teleport(agent_host, xcoord, 2)
         if world_state.number_of_rewards_since_last_state > 0:
             reward+= world_state.rewards[0].getValue()
@@ -302,6 +306,30 @@ class Monty(object):
         return index
         # -- TODO -- also place the actual diamond
 
+    def show_world(self, action):
+        grid = "|"
+        observation_space = "|"
+        playerloc = "|"
+        for i in range(num_doors):
+            if lavaOrd[i] == 'dirt':
+                grid += "      water      |"
+            else:
+                grid += "      " + lavaOrd[i] + "      |"
+        for i in range(num_doors):
+            observation_space += "      " + self.observation_space[i] + "      "
+        for i in range(num_doors):
+            if i != action:
+                playerloc += "                 "
+            else:
+                playerloc += "      Monty "
+        print("***** Grid Space *****")
+        print("Legend:   Diamond = First selection     Stone = Revealed by enviornment    Air = Switch")
+        print("_____________________________________________________")
+        print(grid)
+        print(observation_space)
+        print(playerloc)
+        print("_____________________________________________________\n")
+
     def run(self, agent_host):
         '''
         TODO:
@@ -314,7 +342,7 @@ class Monty(object):
 
         # now place a stone to mark where lava is (presentor opening door)
         self.revealOneWrongChoice()    
-        print("\nobservation space: ", self.observation_space)
+        # print("\nobservation space: ", self.observation_space)
         
         # we're using observation_space as the state
         s = self.get_curr_state()
@@ -331,8 +359,11 @@ class Monty(object):
         R.append(current_r)
 
         # check to see if switched
-        print("\n-------\n")
-        print("Iteration ", len(switched_arr))
+        # print("\n-------\n")
+        print("-------------------------------------- Iteration ", len(switched_arr), " --------------------------------------")
+
+        self.show_world(next_a)
+
         if not is_random:
             if next_a != first_action:
                 switched_arr.append(1)
@@ -340,20 +371,28 @@ class Monty(object):
             else:
                 switched_arr.append(0)
                 print("DIDN'T SWITCH")
-            print("Percent switched non randomly: ", statistics.mean(switched_arr))
+            print("---")
+            if len(switched_arr)> 0:
+                print("Percent switched non randomly: ", statistics.mean(switched_arr))
             if len(switched_arr)> 20:
                 print("Percent switched non randomly last 20: ", statistics.mean(switched_arr[-20:-1]))
+            print("---")
             if lavaOrd[next_a] == 'lava':
                 live_arr.append(0)
-                print("next_a", next_a)
-                print("lavaord", lavaOrd)
                 print("DIED")
+                print("---")
             else:
                 live_arr.append(1)
                 print("LIVED")
-        print("Percent survived: ", statistics.mean(live_arr))
+        else:
+            print("RANDOM ACTION")
+            print("---")
+        if len(live_arr)> 0:
+            print("Percent survived: ", statistics.mean(live_arr))
+            print("---")
         if len(live_arr)> 20:
             print("Percent survived last 20: ", statistics.mean(live_arr[-20:-1]))
+            print("---")
         
         
         t = len(switched_arr)
@@ -362,11 +401,9 @@ class Monty(object):
 
         # self.update_q_table(tau, s, next_a, current_r, T)
         self.update_q_table(tau, s, next_a, current_r, T)
-        print("\n-------\n")
+        print("\n-------------------------------------- END ITERATION --------------------------------------\n")
 
         self.observation_space = ['stone'] * num_doors
-
-
 
 if __name__ == '__main__':
     print('Starting...', flush=True)
@@ -412,11 +449,8 @@ if __name__ == '__main__':
             world_state = agent_host.getWorldState()
 
                 # Every few iteration Monty will show us the best policy that he learned.
-        if (epoc_num + 1) % 5 == 0:
-            print((epoc_num+1), 'Showing best policy:', end = " ")
-            # best_policy = monty.best_policy(agent_host)
         else:
-            print((epoc_num+1), 'Learning Q-Table:', end = " ")
+            # print((epoc_num+1), 'Learning Q-Table:', end = " ")
             monty.run(agent_host=agent_host)
         # lavaOrd=['lava','lava','lava','lava','lava','lava','lava']
         lavaOrd=['lava'] * num_doors

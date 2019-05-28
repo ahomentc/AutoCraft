@@ -30,7 +30,7 @@ live_arr = [] # 1 for live, 0 for die
 # randomly set lava to two locations and dirt to one
 def setCorrectLoc():
 	correctLoc = randbelow(3)
-	print(correctLoc)
+	# print(correctLoc)
 	lavaOrd[correctLoc] = 'dirt'
 
 # get coordinates of the lava
@@ -59,7 +59,7 @@ def getLavaDrawing(positions):
 	drawing = ""
 	for p in positions:
 		drawing += '<DrawBlock x="' + str(p[0]) + '" y="' + str(p[1]) + '" z="' + str(p[2]) + '" type="lava" />'
-	print(drawing)
+	# print(drawing)
 	return drawing
 
 def getDirtDrawing(position):
@@ -136,8 +136,8 @@ def GetMissionXML(summary):
                 </ObservationFromNearbyEntities>
                 <ObservationFromFullInventory/>
                 <RewardForTouchingBlockType>
-                    <Block reward="-8.0" type="lava" behaviour="onceOnly"/>
-                    <Block reward="10.0" type="water" behaviour="onceOnly"/>
+                    <Block reward="-9.0" type="lava" />
+                    <Block reward="9.0" type="water" />
                 </RewardForTouchingBlockType>
             </AgentHandlers>
         </AgentSection>
@@ -153,7 +153,7 @@ class Monty(object):
             gamma:  <float>  value decay rate   (default = 1)
             n:      <int>    number of back steps to update (default = 1)
         """
-        self.epsilon = 0.3  # chance of taking a random action instead of the best
+        self.epsilon = 0.15  # chance of taking a random action instead of the best
         self.q_table = {'air':0,'diamond':0}
         self.n, self.alpha, self.gamma = n, alpha, gamma
         
@@ -189,7 +189,7 @@ class Monty(object):
         action_list = []
         # check to see which enviornment placed
         # then selects a block to teleport to
-        print(self.observation_space)
+        # print(self.observation_space)
         if self.observation_space[0] == 'stone':
             action_list = tuple([1,2])
         elif self.observation_space[1] == 'stone':
@@ -202,15 +202,15 @@ class Monty(object):
     # only does the second action. Not for the first action. That one is always random anyways
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
-        print("\n --- stats ---- \n")
-        print("curr state ", curr_state)
-        print("q table ", self.q_table)
-        print("possible actions ", possible_actions)
+        # print("\n --- stats ---- \n")
+        # print("curr state ", curr_state)
+        # print("q table ", self.q_table)
+        # print("possible actions ", possible_actions)
 
         a = random.uniform(0, 1)
-        print(a)
+        # print(a)
         if a <= eps:
-            print("RANDOM")
+            # print("RANDOM")
             elements = ['air','diamond']
             return self.observation_space.index(elements[random.randint(0, 1)]),True
         else:
@@ -243,12 +243,12 @@ class Monty(object):
         TODO:
         '''
         # curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
-        print("gamma:", self.gamma)
+        # print("gamma:", self.gamma)
         print("R:", R)
         print("S:", S)
         print("A:", A)
 
-        print("element of A: ", self.observation_space[A])
+        # print("element of A: ", self.observation_space[A])
         ele = self.observation_space[A]
 
         G = self.gamma * R   
@@ -267,6 +267,30 @@ class Monty(object):
         return index
         # -- TODO -- also place the actual diamond
 
+    def show_world(self, action):
+        grid = "|"
+        observation_space = "|"
+        playerloc = "|"
+        for i in range(3):
+            if lavaOrd[i] == 'dirt':
+                grid += "      water      |"
+            else:
+                grid += "      " + lavaOrd[i] + "      |"
+        for i in range(3):
+            observation_space += "      " + self.observation_space[i] + "      "
+        for i in range(3):
+            if i != action:
+                playerloc += "                 "
+            else:
+                playerloc += "      Monty "
+        print("***** Grid Space *****")
+        print("Legend:   Diamond = First selection     Stone = Revealed by enviornment    Air = Switch")
+        print("_____________________________________________________")
+        print(grid)
+        print(observation_space)
+        print(playerloc)
+        print("_____________________________________________________\n")
+
     def run(self, agent_host):
         '''
         TODO:
@@ -278,7 +302,7 @@ class Monty(object):
 
         # now place a stone to mark where lava is (presentor opening door)
         indexOfReveal = self.revealOneWrongChoice()    
-        print("\nobservation space: ", self.observation_space)
+        # print("\nobservation space: ", self.observation_space)
         
         # we're using observation_space as the state
         s = self.get_curr_state()
@@ -286,7 +310,7 @@ class Monty(object):
         possible_actions = self.get_possible_actions(agent_host)
 
         # returns index to teleport to
-        next_a,was_random = self.choose_action(s, possible_actions, self.epsilon)
+        next_a,is_random = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
         
         # act and get reward from the action
@@ -295,26 +319,39 @@ class Monty(object):
         R.append(current_r)
 
         # check to see if switched
-        print("\n-------\n")
+        print("-------------------------------------- Iteration ", len(switched_arr), " --------------------------------------")
 
-        print("Iteration ", len(switched_arr))
+        self.show_world(next_a)
 
-        if not was_random:
+        if not is_random:
             if next_a != first_action:
                 switched_arr.append(1)
                 print("SWITCHED")
             else:
                 switched_arr.append(0)
                 print("DIDN'T SWITCH")
-            print("Percent switched non-randomly: ", statistics.mean(switched_arr))
-            if len(switched_arr) > 20:
-                print("Percent switched non-randomly last 20: ", statistics.mean(switched_arr[-20:-1]))
-        if lavaOrd[next_a] == 'lava':
-            live_arr.append(0)
+            print("---")
+            if len(switched_arr)> 0:
+                print("Percent switched non randomly: ", statistics.mean(switched_arr))
+            if len(switched_arr)> 20:
+                print("Percent switched non randomly last 20: ", statistics.mean(switched_arr[-20:-1]))
+            print("---")
+            if lavaOrd[next_a] == 'lava':
+                live_arr.append(0)
+                print("DIED")
+                print("---")
+            else:
+                live_arr.append(1)
+                print("LIVED")
         else:
-            live_arr.append(1)
-        print("Percent survived: ", statistics.mean(live_arr))
-        print("\n-------\n")
+            print("RANDOM ACTION")
+            print("---")
+        if len(live_arr)> 0:
+            print("Percent survived: ", statistics.mean(live_arr))
+            print("---")
+        if len(live_arr)> 20:
+            print("Percent survived last 20: ", statistics.mean(live_arr[-20:-1]))
+            print("---")
         
         # t = 2 #arbitrary number. just trying to get tau and update_q_table to work
         t = len(switched_arr)
@@ -326,25 +363,6 @@ class Monty(object):
         self.update_q_table(tau, s, next_a, current_r, T)
 
         self.observation_space = ['air', 'air', 'air']
-
-        # t = 2 #arbitrary number. just trying to get tau and update_q_table to work
-        # T = sys.maxsize #No relevance rn. just trying to get tau and update_q_table to work.
-        # tau = t - self.n + 1
-
-        # if t < T:
-        #     current_r = self.act(agent_host, False, A[-1])
-        #     R.append(current_r)
-            
-        #     s = self.get_curr_state()
-        #     S.append(s)
-        #     possible_actions = self.get_possible_actions(agent_host)
-        #     next_a = self.choose_action(s, possible_actions, self.epsilon)
-        #     A.append(next_a)
-        
-        # if tau >= 0:
-        #     self.update_q_table(tau, S, A, R, T)
-        # else:
-        #     self.update_q_table(tau, S, A, R, T)
 
 
 if __name__ == '__main__':
@@ -391,13 +409,8 @@ if __name__ == '__main__':
             time.sleep(0.1)
             world_state = agent_host.getWorldState()
 
-                # Every few iteration Monty will show us the best policy that he learned.
-        if (epoc_num + 1) % 5 == 0:
-            print((epoc_num+1), 'Showing best policy:', end = " ")
-            # best_policy = monty.best_policy(agent_host)
-        else:
-            print((epoc_num+1), 'Learning Q-Table:', end = " ")
-            monty.run(agent_host=agent_host)
+
+        monty.run(agent_host=agent_host)
         lavaOrd=['lava','lava','lava']
         time.sleep(1)
 
