@@ -53,7 +53,7 @@ We wanted our percent of switching to be closer to 100%, regardless of what our 
 <img src="https://i.imgur.com/ok9ZNaq.png" alt="drawing" width="600"/><br/>
 Screenshot where new technique goes really well<br/>
 
-<img src="hhttps://i.imgur.com/xQd3PYV.png" alt="drawing" width="600"/><br/>
+<img src="https://i.imgur.com/xQd3PYV.png" alt="drawing" width="600"/><br/>
 Screenshot where new technique goes really bad<br/>
 
 # Remaining Goals and Challenges

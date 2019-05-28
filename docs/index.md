@@ -2,8 +2,9 @@
 layout: default
 title:  Home
 ---
+<img src="http://www.sciencemadesimple.co.uk/files/2016/04/The-choices.png" alt="drawing" width="100%"/><br/>
 
-Source code: https://github.com/ahomentc/AutoCraft
+Source code: [https://github.com/ahomentc/AutoCraft](https://github.com/ahomentc/AutoCraft)
 
 Reports:
 
@@ -21,5 +22,5 @@ A key insight is that switching doors is a different action than choosing betwee
 
 Video describing the problem: https://www.youtube.com/watch?v=4Lb-6rxZxx0
 
-# We are training an agent to choose to switch as much as possible
+### We are training an agent to choose to switch as much as possible
 
