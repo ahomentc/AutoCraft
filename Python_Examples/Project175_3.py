@@ -137,8 +137,8 @@ def GetMissionXML(summary):
                     <Item type="rabbit_stew" description="Supper's Up!!"/>
                 </AgentQuitFromCollectingItem>
                 <RewardForTouchingBlockType>
-                    <Block reward="-100.0" type="lava" behaviour="onceOnly"/>
-                    <Block reward="100.0" type="water" behaviour="onceOnly"/>
+                    <Block reward="-1.0" type="lava" behaviour="onceOnly"/>
+                    <Block reward="10.0" type="water" behaviour="onceOnly"/>
                 </RewardForTouchingBlockType>
             </AgentHandlers>
         </AgentSection>
@@ -146,7 +146,7 @@ def GetMissionXML(summary):
     </Mission>'''
 
 class Monty(object):
-    def __init__(self, alpha=0.3, gamma=1, n=1):
+    def __init__(self, alpha=0.2, gamma=1, n=1):
         """Constructing an RL agent.
 
         Args
@@ -154,9 +154,14 @@ class Monty(object):
             gamma:  <float>  value decay rate   (default = 1)
             n:      <int>    number of back steps to update (default = 1)
         """
-        self.epsilon = 0.1  # chance of taking a random action instead of the best
+        # self.epsilon = 0.35  # chance of taking a random action instead of the best
+        self.epsilon = .15
         self.q_table = {}
         self.n, self.alpha, self.gamma = n, alpha, gamma
+        
+        # new!
+        self.alpha = .15
+        self.gamma = 1.5
 
         # ------- Init the environment stuff here ----
         # ex:
@@ -172,17 +177,21 @@ class Monty(object):
         agent_host.sendCommand(tp_command)
 
     # returns an index from lavaOrd of the wrong choice to reveal
+    # def revealOneWrongChoice(self):
+    #     index = random.randint(0, 1)
+    #     selections = []
+    #     for i in range(3):
+    #         if lavaOrd[i] == 'lava':
+    #             selections.append(i)
+    #     self.observation_space[selections[index]] = 'stone'
+    #     # update the observation state to show a block
+    #     # also place a stone --- TODO ---
+    #     return selections[index]
     def revealOneWrongChoice(self):
-        index = random.randint(0, 1)
-        selections = []
         for i in range(3):
-            if lavaOrd[i] == 'lava':
-                selections.append(i)
-        self.observation_space[selections[index]] = 'stone'
-        # update the observation state to show a block
-        # also place a stone --- TODO ---
-        return selections[index]
-
+            if lavaOrd[i] == 'lava' and self.observation_space[i] != 'diamond':
+                self.observation_space[i] = 'stone'
+                break
 
     def get_possible_actions(self, agent_host):
         '''
@@ -206,6 +215,11 @@ class Monty(object):
     # only does the second action. Not for the first action. That one is always random anyways
     def choose_action(self, curr_state, possible_actions, eps):
         """Chooses an action according to eps-greedy policy. """
+        print("\n --- stats ---- \n")
+        print("curr state ", curr_state)
+        print("q table ", self.q_table)
+        print("possible actions ", possible_actions)
+        
         if curr_state not in self.q_table:
             self.q_table[curr_state] = {}
         for action in possible_actions:
@@ -215,12 +229,34 @@ class Monty(object):
         a = random.uniform(0, 1)
         if a <= eps:
             a2 = random.randint(0, len(possible_actions) - 1)
-            return possible_actions[a2]
+            return possible_actions[a2],True
         else:
             maxTuple = max(self.q_table[curr_state].items(),key = lambda x:x[1])
+            print("maxTuple: ", maxTuple)
             maxList = [i[0] for i in self.q_table[curr_state].items() if i[1] == maxTuple[1]]
+            print("maxList: ", maxList)
             a2 = random.randint(0, len(maxList) - 1)
-            return maxList[a2]
+            print("chosen ", maxList[a2])
+            print("\n --- end stats ---- \n")
+            return maxList[a2],False
+
+    # def choose_action(self, curr_state, possible_actions, eps):
+    #     """Chooses an action according to eps-greedy policy. """
+    #     if curr_state not in self.q_table:
+    #         self.q_table[curr_state] = {}
+    #     for action in possible_actions:
+    #         if action not in self.q_table[curr_state]:
+    #             self.q_table[curr_state][action] = 0
+
+    #     a = random.uniform(0, 1)
+    #     if a <= eps:
+    #         a2 = random.randint(0, len(possible_actions) - 1)
+    #         return possible_actions[a2]
+    #     else:
+    #         maxTuple = max(self.q_table[curr_state].items(),key = lambda x:x[1])
+    #         maxList = [i[0] for i in self.q_table[curr_state].items() if i[1] == maxTuple[1]]
+    #         a2 = random.randint(0, len(maxList) - 1)
+    #         return maxList[a2]
 
     def convert_code_to_world_action(self, action):
         return 2 * (action-1)
@@ -250,29 +286,29 @@ class Monty(object):
         print("S:", S)
         print("A:", A)
 
-        G = sum([self.gamma ** R])        
+        G = self.gamma * R   
         if tau + self.n < T:
-            G += self.gamma ** self.n * self.q_table[S][A]
+            G += self.gamma * self.n * self.q_table[S][A]
         old_q = self.q_table[S][A]
         self.q_table[S][A] = old_q + self.alpha * (G - old_q)
         print("end q_table:", self.q_table)
 
     # def update_q_table(self, tau, S, A, R, T):
-    #     """Performs relevant updates for state tau.
-    #     Args
-    #         tau: <int>  state index to update
-    #         S:   <dequqe>   states queue
-    #         A:   <dequqe>   actions queue
-    #         R:   <dequqe>   rewards queue
-    #         T:   <int>      terminating state index
-    #     """
-    #     curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
-    #     G = sum([self.gamma ** i * R[i] for i in range(len(S))])
-    #     if tau + self.n < T:
-    #         G += self.gamma ** self.n * self.q_table[S[-1]][A[-1]]
+    #     '''
+    #     TODO:
+    #     '''
+    #     # curr_s, curr_a, curr_r = S.popleft(), A.popleft(), R.popleft()
+    #     print("gamma:", self.gamma)
+    #     print("R:", R)
+    #     print("S:", S)
+    #     print("A:", A)
 
-    #     old_q = self.q_table[curr_s][curr_a]
-    #     self.q_table[curr_s][curr_a] = old_q + self.alpha * (G - old_q)
+    #     G = sum([self.gamma ** R])        
+    #     if tau + self.n < T:
+    #         G += self.gamma ** self.n * self.q_table[S][A]
+    #     old_q = self.q_table[S][A]
+    #     self.q_table[S][A] = old_q + self.alpha * (G - old_q)
+    #     print("end q_table:", self.q_table)
 
     def get_curr_state(self):
         return tuple(self.observation_space)
@@ -288,7 +324,6 @@ class Monty(object):
         TODO:
         '''
        	S, A, R = deque(), deque(), deque()
-
         # choose a random action (select first door)
         # we don't need to train for this as its always random
         first_action = self.chooseRandomFirstAction()
@@ -303,7 +338,7 @@ class Monty(object):
         possible_actions = self.get_possible_actions(agent_host)
 
         # returns index to teleport to
-        next_a = self.choose_action(s, possible_actions, self.epsilon)
+        next_a,was_random = self.choose_action(s, possible_actions, self.epsilon)
         A.append(next_a)
         
         # act and get reward from the action
@@ -313,18 +348,24 @@ class Monty(object):
 
         # check to see if switched
         print("\n-------\n")
+
         print("Iteration ", len(switched_arr))
-        if next_a != first_action:
-            switched_arr.append(1)
-            print("SWITCHED")
-        else:
-            switched_arr.append(0)
-            print("DIDN'T SWITCH")
-        print("Percent switched: ", statistics.mean(switched_arr))
-        if lavaOrd[next_a] == 'lava':
-            live_arr.append(0)
-        else:
-            live_arr.append(1)
+
+        if not was_random:
+            if next_a != first_action:
+                switched_arr.append(1)
+                print("SWITCHED")
+            else:
+                switched_arr.append(0)
+                print("DIDN'T SWITCH")
+            print("Percent switched non-randomly: ", statistics.mean(switched_arr))
+            if len(switched_arr) > 20:
+                print("Percent switched non-randomly last 20: ", statistics.mean(switched_arr[-20:-1]))
+            if lavaOrd[next_a] == 'lava':
+                live_arr.append(0)
+            else:
+                live_arr.append(1)
+
         print("Percent survived: ", statistics.mean(live_arr))
         print("\n-------\n")
         
