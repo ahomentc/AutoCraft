@@ -16,7 +16,7 @@ from collections import defaultdict, deque
 from timeit import default_timer as timer
 from secrets import randbelow
 
-num_doors = 5
+num_doors = 3
 staticEnv = False
 staticFirstAction = False
 
