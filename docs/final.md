@@ -4,7 +4,7 @@ title: Status
 ---
 # AutoCraft Final Report
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IQFVIjwp4c0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WjNfNQ-Mj7Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Project Summary: 
 We are training an agent to learn how to solve the Monty Hall Problem. In the problem, the player is given 3 doors, 2 of which contains goat and the final one contains a car. The aim for the player is to win the car. The player first makes a choice, the host opens up a door (not chosen by the player) with a goat in it and provides a choice to the player to stick with his option or change his preference. 
