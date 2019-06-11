@@ -14,7 +14,7 @@ According to probability, the player should swtich his choice to maximize his ch
 We needed to use Reinforcement learning for this problem because it is seemingly irrational and unclear as to which door to choose. Intuitivly, people do not switch because they don't see the probability of switching as being higher, and see switching as a "trick" for them to choose the wrong door. Also, humans assume that "two choices means 50-50 chances", which is not the case. If a human was to play our program, they would most likley choose to not switch, which is wrong. We wanted to train an AI to not have that bias and choose purely based on the rewards for switching or not switching.
 
 
-# Approach: 
+# Approaches: 
 The way we emulate the problem is by having holes through which the agent can either land in lava or water. If the agent lands in lava, he dies, while if he lands in water, he survives. Regardless of how many holes there are, there will only be one that has water under it, with the rest having lava.
 
 We have two main approaches, one that worked and one that didn't work.
@@ -95,11 +95,15 @@ Our goal, originally, was to reach a survival rate of about 66% and switch 100% 
 
 So we can see that this approach was a clear success. It learns to swtich 100% of the time and has the survival rate of about what is mathametically proven as the maximum.
 
-# Resources Used:
+# References:
 https://towardsdatascience.com/deep-learning-a-monty-hall-strategy-or-a-gentle-introduction-to-deep-q-learning-and-openai-gym-d66918ac5b26
 
 https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html
 
 https://www.freecodecamp.org/news/an-introduction-to-q-learning-reinforcement-learning-14ac0b4493cc/
+
+https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Monty_tree_door1.svg/700px-Monty_tree_door1.svg.png
+
+http://www.sciencemadesimple.co.uk/files/2016/04/The-choices.png
 
 
